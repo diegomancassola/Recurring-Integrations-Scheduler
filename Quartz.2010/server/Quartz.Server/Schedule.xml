@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<job-scheduling-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xmlns="http://quartznet.sourceforge.net/JobSchedulingData">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>GENERALJOURNALS</name>
+      <group>Download jobs</group>
+      <description></description>
+      <job-type>RecurringIntegrationsScheduler.Job.Export,RecurringIntegrationsScheduler.Job.Export, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>DownloadSuccessDir</key>
+          <value>C:\Integrations\Inbound</value>
+        </entry>
+        <entry>
+          <key>DownloadErrorsDir</key>
+          <value>C:\Integrations\Inbound\Errors</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UnzipPackage</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>AddTimestamp</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>DeletePackage</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>DataProject</key>
+          <value>GENERALJOURNALS</value>
+        </entry>
+        <entry>
+          <key>Company</key>
+          <value>RO01</value>
+        </entry>
+        <entry>
+          <key>Interval</key>
+          <value>300000</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADw2m9ozKTkGu+lDjkQ8hmQQAAAACAAAAAAAQZgAAAAEAACAAAADTew3Q6RKo2TlWNGNW7w1hbrhaKqfvKFtHEFPeYaKUEwAAAAAOgAAAAAIAACAAAABMuft7u70c5e5De4BwFm969+gV5jk+ETP4gK1fKkUBkSAAAADJj76UjpCF5fsyF74kJ73gQLLYQnDx4rNE38jWxC7IPkAAAAB1hgMnVFIhSVCMRTXMuauDufmAoplGiuEum8f8YjgT3CHGKBARxwkgC/sUTl1uGF66C+j6nkE+ckH1RR5ZoGyo</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <trigger>
+      <cron>
+        <name>Trigger for job GENERALJOURNALS.Download jobs</name>
+        <group>Download jobs</group>
+        <description>Trigger for job GENERALJOURNALS.Download jobs</description>
+        <job-name>GENERALJOURNALS</job-name>
+        <job-group>Download jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>Coordinated Universal Time</time-zone>
+      </cron>
+    </trigger>
+  </schedule>
+</job-scheduling-data>
