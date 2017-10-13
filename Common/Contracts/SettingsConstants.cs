@@ -88,6 +88,7 @@ namespace RecurringIntegrationsScheduler.Common.Contracts
         /// The execution monitor job
         /// </summary>
         public const string ExecutionJob = "RecurringIntegrationsScheduler.Job.ExecutionMonitor";
+
         #endregion
 
         #region Upload Job settings

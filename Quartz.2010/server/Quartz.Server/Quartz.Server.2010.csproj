@@ -115,26 +115,27 @@
       <HintPath>..\..\packages\Quartz.2.4.1\lib\net40\Quartz.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RecurringIntegrationsScheduler.Common">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Common.dll</HintPath>
+    <Reference Include="RecurringIntegrationsScheduler.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Common.dll</HintPath>
     </Reference>
     <Reference Include="RecurringIntegrationsScheduler.Job.Download">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Job.Download.dll</HintPath>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Job.Download.dll</HintPath>
     </Reference>
     <Reference Include="RecurringIntegrationsScheduler.Job.ExecutionMonitor">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Job.ExecutionMonitor.dll</HintPath>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Job.ExecutionMonitor.dll</HintPath>
     </Reference>
     <Reference Include="RecurringIntegrationsScheduler.Job.Export">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Job.Export.dll</HintPath>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Job.Export.dll</HintPath>
     </Reference>
     <Reference Include="RecurringIntegrationsScheduler.Job.Import">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Job.Import.dll</HintPath>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Job.Import.dll</HintPath>
     </Reference>
     <Reference Include="RecurringIntegrationsScheduler.Job.ProcessingMonitor">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Job.ProcessingMonitor.dll</HintPath>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Job.ProcessingMonitor.dll</HintPath>
     </Reference>
     <Reference Include="RecurringIntegrationsScheduler.Job.Upload">
-      <HintPath>..\..\..\Recurring-Integrations-Scheduler\Output\Debug\RecurringIntegrationsScheduler.Job.Upload.dll</HintPath>
+      <HintPath>..\..\..\Output\Debug\RecurringIntegrationsScheduler.Job.Upload.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>

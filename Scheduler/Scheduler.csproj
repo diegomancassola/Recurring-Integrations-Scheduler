@@ -134,11 +134,23 @@
     <Compile Include="Forms\DataJobForm.Designer.cs">
       <DependentUpon>DataJobForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SQLExportJob_M.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SQLExportJob_M.Designer.cs">
+      <DependentUpon>SQLExportJob_M.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ExportJob.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ExportJob.Designer.cs">
       <DependentUpon>ExportJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SQLImportJob_M.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SQLImportJob_M.Designer.cs">
+      <DependentUpon>SQLImportJob_M.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\JobGroupForm.cs">
       <SubType>Form</SubType>
@@ -187,6 +199,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources_M.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources_M.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\AadApplication.cs" />
     <Compile Include="Settings\AadApplications.cs" />
     <Compile Include="Settings\JobGroup.cs" />
@@ -233,14 +250,21 @@
       <DependentUpon>DataJobForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SQLExportJob_M.resx">
+      <DependentUpon>SQLExportJob_M.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExportJob.resx">
       <DependentUpon>ExportJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SQLImportJob_M.resx">
+      <DependentUpon>SQLImportJob_M.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\JobGroupForm.resx">
       <DependentUpon>JobGroupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportJob.resx">
       <DependentUpon>ImportJob.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
@@ -272,6 +296,10 @@
     <EmbeddedResource Include="Forms\Connect.resx">
       <DependentUpon>Connect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources_M.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources_M.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
@@ -296,9 +324,29 @@
       <Project>{a496c8a4-472d-4f9f-840a-31a767813e90}</Project>
       <Name>Job.Download</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Job.ExecutionMonitor\Job.ExecutionMonitor.csproj">
+      <Project>{00702884-ffd3-47fa-b2dc-65377865abae}</Project>
+      <Name>Job.ExecutionMonitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Job.Export\Job.Export.csproj">
+      <Project>{8e9bc494-6962-48dc-bc55-4e159e5517d3}</Project>
+      <Name>Job.Export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Job.Import\Job.Import.csproj">
+      <Project>{ebdcc3f9-0bff-4f31-a3e8-b2e730f5ab93}</Project>
+      <Name>Job.Import</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Job.ProcessingMonitor\Job.ProcessingMonitor.csproj">
       <Project>{a6771465-3c32-4998-bce4-91c7951d93f5}</Project>
       <Name>Job.ProcessingMonitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Job.SQL.Export\Job.SQLExport_M.csproj">
+      <Project>{0ce5466a-1466-4ec4-97c9-6aaa8d30f146}</Project>
+      <Name>Job.SQLExport_M</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Job.SQL.Import\Job.SQLImport_M.csproj">
+      <Project>{0a9faf66-a954-4458-b34b-bd5bc1538c43}</Project>
+      <Name>Job.SQLImport_M</Name>
     </ProjectReference>
     <ProjectReference Include="..\Job.Upload\Job.Upload.csproj">
       <Project>{e6153d36-8360-40ac-98a8-aa1e3b9b3c29}</Project>

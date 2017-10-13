@@ -227,6 +227,10 @@ namespace RecurringIntegrationsScheduler.Forms
                             addUploadJobMenuItem.Enabled = true;
                             addImportJobMenuItem.Enabled = true;
                             addExportJobMenuItem.Enabled = true;
+                            //Start - DManc - 2017/10/13
+                            addSQLImportJobMenuItem_M.Enabled = true;
+                            addSQLExportJobMenuItem_M.Enabled = true;
+                            //End - DManc - 2017/10/13
                             refreshButton.Enabled = true;
 
                             RefreshGrid();
@@ -303,6 +307,10 @@ namespace RecurringIntegrationsScheduler.Forms
                     addImportJobMenuItem.Enabled = true;
                     addExportJobMenuItem.Enabled = true;
                     refreshButton.Enabled = true;
+                    //Start - DManc - 2017/10/13
+                    addSQLImportJobMenuItem_M.Enabled = true;
+                    addSQLExportJobMenuItem_M.Enabled = true;
+                    //End - DManc - 2017/10/13
 
                     RefreshGrid();
                     _privateScheduler = true;
@@ -494,6 +502,70 @@ namespace RecurringIntegrationsScheduler.Forms
                         }
                         break;
 
+                    //Start - DManc - 2017/10/13
+                    case SettingsConstants_M.SQLImportJob_M:
+                        //find related execution job
+                        var executionJobName_M = jobDetail.Key.Name + "-Execution monitor";
+                        var executionJobKey_M = new JobKey(executionJobName_M, jobDetail.Key.Group);
+                        var executionJobDetail_M = scheduler.GetJobDetail(executionJobKey_M);
+                        ITrigger executionJobTrigger_M = null;
+
+                        if (executionJobDetail_M != null)
+                        {
+                            executionJobTrigger = scheduler.GetTriggersOfJob(executionJobKey_M)[0];
+                        }
+
+                        using (SQLImportJob_M importForm = new SQLImportJob_M
+                        {
+                            ImportJobDetail = jobDetail,
+                            ImportTrigger = jobTrigger
+                        })
+                        {
+                            if ((executionJobDetail_M != null) && (executionJobTrigger_M != null))
+                            {
+                                importForm.ExecutionJobDetail = executionJobDetail_M;
+                                importForm.ExecutionTrigger = executionJobTrigger_M;
+                            }
+
+                            importForm.ShowDialog();
+                            if (!importForm.Cancelled && (importForm.ImportJobDetail != null) &&
+                                (importForm.ImportTrigger != null))
+                            {
+                                scheduler.ScheduleJob(
+                                    importForm.ImportJobDetail, new HashSet<ITrigger> { importForm.ImportTrigger }, true);
+
+                                if ((importForm.ExecutionJobDetail != null) && (importForm.ExecutionTrigger != null))
+                                {
+                                    scheduler.ScheduleJob(
+                                        importForm.ExecutionJobDetail, new HashSet<ITrigger> { importForm.ExecutionTrigger }, true);
+                                }
+
+                                RefreshGrid();
+                            }
+                        }
+                        break;
+
+                    case SettingsConstants_M.SQLExportJob_M:
+                        using (SQLExportJob_M exportForm = new SQLExportJob_M
+                        {
+                            JobDetail = jobDetail,
+                            Trigger = jobTrigger
+                        })
+                        {
+                            exportForm.ShowDialog();
+
+                            if (!exportForm.Cancelled && (exportForm.JobDetail != null) &&
+                                (exportForm.Trigger != null))
+                            {
+                                scheduler.ScheduleJob(
+                                    exportForm.JobDetail, new HashSet<ITrigger> { exportForm.Trigger }, true);
+
+                                RefreshGrid();
+                            }
+                        }
+                        break;
+                    //End - DManc - 2017/10/13
+
                     case SettingsConstants.ProcessingJob:
                         MessageBox.Show(Resources.Processing_monitoring_job_is_not_supported);
                         break;
@@ -602,6 +674,9 @@ namespace RecurringIntegrationsScheduler.Forms
                 {
                     case SettingsConstants.DownloadJob:
                     case SettingsConstants.ExportJob:
+                    //Start - DManc - 2017/10/13
+                    case SettingsConstants_M.SQLExportJob_M:
+                    //End - DManc - 2017/10/13
                         openFailedProcessingFolderToolStripMenuItem.Visible = false;
                         openFailedUploadsFolderToolStripMenuItem.Visible = false;
                         openInputFolderToolStripMenuItem.Visible = false;
@@ -611,6 +686,9 @@ namespace RecurringIntegrationsScheduler.Forms
                         break;
                     case SettingsConstants.UploadJob:
                     case SettingsConstants.ImportJob:
+                    //Start - DManc - 2017/10/13
+                    case SettingsConstants_M.SQLImportJob_M:
+                    //End - DManc - 2017/10/13
                         openFailedProcessingFolderToolStripMenuItem.Visible = false;
                         openSuccessfulDownloadsFolderToolStripMenuItem.Visible = false;
                         openSuccessfulProcessingFolderToolStripMenuItem.Visible = false;
@@ -627,6 +705,7 @@ namespace RecurringIntegrationsScheduler.Forms
                         openSuccessfulProcessingFolderToolStripMenuItem.Visible = true;
                         openSuccessfulUploadsFolderToolStripMenuItem.Visible = true;
                         break;
+
                     default:
                         return;
                 }
@@ -1004,5 +1083,65 @@ namespace RecurringIntegrationsScheduler.Forms
                 MessageBox.Show(ex.Message, Resources.Unexpected_error);
             }
         }
+
+        //Start - DManc - 2017/10/13                   
+        private void addSQLImportJobMenuItem_M_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLImportJob_M form = new SQLImportJob_M())
+                {
+                    form.ShowDialog();
+                    if (form.Cancelled || (form.ImportJobDetail == null) || (form.ImportTrigger == null)) return;
+
+                    var scheduler = Scheduler.Instance.GetScheduler();
+                    if (scheduler == null)
+                    {
+                        MessageBox.Show(Resources.No_active_scheduler, Resources.Missing_scheduler);
+                        return;
+                    }
+
+                    scheduler.ScheduleJob(
+                        form.ImportJobDetail, new HashSet<ITrigger> { form.ImportTrigger }, true);
+
+                    if ((form.ExecutionJobDetail != null) && (form.ExecutionTrigger != null))
+                    {
+                        scheduler.ScheduleJob(
+                            form.ExecutionJobDetail, new HashSet<ITrigger> { form.ExecutionTrigger }, true);
+                    }
+                    _scheduleChanged = true;
+                    RefreshGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Resources.Unexpected_error);
+            }
+        }
+
+        private void addSQLExportJobMenuItem_M_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLExportJob_M form = new SQLExportJob_M())
+                {
+                    form.ShowDialog();
+
+                    if (!form.Cancelled && (form.JobDetail != null) && (form.Trigger != null))
+                    {
+                        Scheduler.Instance.GetScheduler()
+                            .ScheduleJob(form.JobDetail, new HashSet<ITrigger> { form.Trigger }, true);
+
+                        _scheduleChanged = true;
+                        RefreshGrid();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Resources.Unexpected_error);
+            }
+        }
+        //End - DManc - 2017/10/13
     }
 }

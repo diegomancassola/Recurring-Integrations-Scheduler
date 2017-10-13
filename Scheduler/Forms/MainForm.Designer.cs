@@ -32,7 +32,7 @@ namespace RecurringIntegrationsScheduler.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainMenuToolStrip = new System.Windows.Forms.ToolStrip();
             this.connectToServerButton = new System.Windows.Forms.ToolStripButton();
             this.privateSchedulerButton = new System.Windows.Forms.ToolStripButton();
@@ -66,10 +66,12 @@ namespace RecurringIntegrationsScheduler.Forms
             this.instanceFilter = new System.Windows.Forms.ToolStripTextBox();
             this.jobNameFilter = new System.Windows.Forms.ToolStripTextBox();
             this.addJobsDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.addUploadJobMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addDownloadJobMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addImportJobMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addExportJobMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addUploadJobMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDownloadJobMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSQLImportJobMenuItem_M = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSQLExportJobMenuItem_M = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteJobButton = new System.Windows.Forms.ToolStripButton();
             this.editJobButton = new System.Windows.Forms.ToolStripButton();
             this.pauseResumeDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
@@ -97,9 +99,8 @@ namespace RecurringIntegrationsScheduler.Forms
             this.aboutButton});
             this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuToolStrip.Name = "mainMenuToolStrip";
-            this.mainMenuToolStrip.Size = new System.Drawing.Size(1132, 32);
+            this.mainMenuToolStrip.Size = new System.Drawing.Size(755, 25);
             this.mainMenuToolStrip.TabIndex = 0;
-            this.mainMenuToolStrip.Text = "";
             // 
             // connectToServerButton
             // 
@@ -107,7 +108,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.connectToServerButton.Image = ((System.Drawing.Image)(resources.GetObject("connectToServerButton.Image")));
             this.connectToServerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.connectToServerButton.Name = "connectToServerButton";
-            this.connectToServerButton.Size = new System.Drawing.Size(161, 29);
+            this.connectToServerButton.Size = new System.Drawing.Size(109, 22);
             this.connectToServerButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Connect_to_service;
             this.connectToServerButton.Click += new System.EventHandler(this.ConnectToServerButton_Click);
             // 
@@ -117,7 +118,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.privateSchedulerButton.Image = ((System.Drawing.Image)(resources.GetObject("privateSchedulerButton.Image")));
             this.privateSchedulerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.privateSchedulerButton.Name = "privateSchedulerButton";
-            this.privateSchedulerButton.Size = new System.Drawing.Size(224, 29);
+            this.privateSchedulerButton.Size = new System.Drawing.Size(150, 22);
             this.privateSchedulerButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Start_standalone_scheduler;
             this.privateSchedulerButton.Click += new System.EventHandler(this.PrivateSchedulerButton_Click);
             // 
@@ -128,7 +129,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.saveScheduleButton.Image = ((System.Drawing.Image)(resources.GetObject("saveScheduleButton.Image")));
             this.saveScheduleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveScheduleButton.Name = "saveScheduleButton";
-            this.saveScheduleButton.Size = new System.Drawing.Size(155, 29);
+            this.saveScheduleButton.Size = new System.Drawing.Size(104, 22);
             this.saveScheduleButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Save_schedule_file;
             this.saveScheduleButton.Click += new System.EventHandler(this.SaveScheduleButton_Click);
             // 
@@ -138,7 +139,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
             this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(103, 29);
+            this.settingsButton.Size = new System.Drawing.Size(70, 22);
             this.settingsButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Parameters;
             this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
@@ -149,7 +150,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.aboutButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutButton.Image")));
             this.aboutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(66, 29);
+            this.aboutButton.Size = new System.Drawing.Size(44, 22);
             this.aboutButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.A_bout;
             this.aboutButton.Click += new System.EventHandler(this.AboutButton_Click);
             // 
@@ -158,17 +159,16 @@ namespace RecurringIntegrationsScheduler.Forms
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripConnectionStatus});
-            this.statusStrip.Location = new System.Drawing.Point(0, 474);
+            this.statusStrip.Location = new System.Drawing.Point(0, 306);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 21, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1132, 30);
+            this.statusStrip.Size = new System.Drawing.Size(755, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
             // toolStripConnectionStatus
             // 
             this.toolStripConnectionStatus.Name = "toolStripConnectionStatus";
-            this.toolStripConnectionStatus.Size = new System.Drawing.Size(129, 25);
+            this.toolStripConnectionStatus.Size = new System.Drawing.Size(86, 17);
             this.toolStripConnectionStatus.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Not_connected;
             // 
             // jobsDataGridView
@@ -177,8 +177,8 @@ namespace RecurringIntegrationsScheduler.Forms
             this.jobsDataGridView.AllowUserToDeleteRows = false;
             this.jobsDataGridView.AllowUserToOrderColumns = true;
             this.jobsDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.jobsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.jobsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.jobsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.jobsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.jobsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -194,15 +194,14 @@ namespace RecurringIntegrationsScheduler.Forms
             this.jobsDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.jobsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.jobsDataGridView.GridColor = System.Drawing.SystemColors.Window;
-            this.jobsDataGridView.Location = new System.Drawing.Point(0, 32);
-            this.jobsDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.jobsDataGridView.Location = new System.Drawing.Point(0, 25);
             this.jobsDataGridView.MultiSelect = false;
             this.jobsDataGridView.Name = "jobsDataGridView";
             this.jobsDataGridView.ReadOnly = true;
             this.jobsDataGridView.RowHeadersVisible = false;
             this.jobsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.jobsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.jobsDataGridView.Size = new System.Drawing.Size(1132, 410);
+            this.jobsDataGridView.Size = new System.Drawing.Size(755, 256);
             this.jobsDataGridView.TabIndex = 3;
             this.jobsDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JobsDataGridView_CellContentDoubleClick);
             this.jobsDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.JobsDataGridView_CellFormatting);
@@ -281,81 +280,81 @@ namespace RecurringIntegrationsScheduler.Forms
             this.openFailedProcessingFolderToolStripMenuItem,
             this.openSuccessfulDownloadsFolderToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(358, 310);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(256, 230);
             // 
             // editJobMenuItem
             // 
             this.editJobMenuItem.Name = "editJobMenuItem";
-            this.editJobMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.editJobMenuItem.Text = Resources.Edit_job;
+            this.editJobMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.editJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Edit_job;
             this.editJobMenuItem.Click += new System.EventHandler(this.EditJobButton_Click);
             // 
             // pauseJobMenuItem
             // 
             this.pauseJobMenuItem.Name = "pauseJobMenuItem";
-            this.pauseJobMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.pauseJobMenuItem.Text = Resources.Pause_job;
+            this.pauseJobMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.pauseJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Pause_job;
             this.pauseJobMenuItem.Click += new System.EventHandler(this.PauseJobButton_Click);
             // 
             // resumeJobToolStripMenuItem1
             // 
             this.resumeJobToolStripMenuItem1.Name = "resumeJobToolStripMenuItem1";
-            this.resumeJobToolStripMenuItem1.Size = new System.Drawing.Size(357, 30);
-            this.resumeJobToolStripMenuItem1.Text = Resources.Resume_job;
+            this.resumeJobToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.resumeJobToolStripMenuItem1.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Resume_job;
             this.resumeJobToolStripMenuItem1.Click += new System.EventHandler(this.ResumeJobButton_Click);
             // 
             // deletJobMenuItem
             // 
             this.deletJobMenuItem.Name = "deletJobMenuItem";
-            this.deletJobMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.deletJobMenuItem.Text = Resources.Delete_job;
+            this.deletJobMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.deletJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Delete_job;
             this.deletJobMenuItem.Click += new System.EventHandler(this.DeleteJobButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(354, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(252, 6);
             // 
             // openInputFolderToolStripMenuItem
             // 
             this.openInputFolderToolStripMenuItem.Name = "openInputFolderToolStripMenuItem";
-            this.openInputFolderToolStripMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.openInputFolderToolStripMenuItem.Text = Resources.Open_input_folder;
+            this.openInputFolderToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.openInputFolderToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Open_input_folder;
             this.openInputFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenInputFolderToolStripMenuItem_Click);
             // 
             // openSuccessfulUploadsFolderToolStripMenuItem
             // 
             this.openSuccessfulUploadsFolderToolStripMenuItem.Name = "openSuccessfulUploadsFolderToolStripMenuItem";
-            this.openSuccessfulUploadsFolderToolStripMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.openSuccessfulUploadsFolderToolStripMenuItem.Text = Resources.Open_successful_uploads_folder;
+            this.openSuccessfulUploadsFolderToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.openSuccessfulUploadsFolderToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Open_successful_uploads_folder;
             this.openSuccessfulUploadsFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenSuccessfulUploadsFolderToolStripMenuItem_Click);
             // 
             // openFailedUploadsFolderToolStripMenuItem
             // 
             this.openFailedUploadsFolderToolStripMenuItem.Name = "openFailedUploadsFolderToolStripMenuItem";
-            this.openFailedUploadsFolderToolStripMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.openFailedUploadsFolderToolStripMenuItem.Text = Resources.Open_failed_uploads_folder;
+            this.openFailedUploadsFolderToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.openFailedUploadsFolderToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Open_failed_uploads_folder;
             this.openFailedUploadsFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenFailedUploadsFolderToolStripMenuItem_Click);
             // 
             // openSuccessfulProcessingFolderToolStripMenuItem
             // 
             this.openSuccessfulProcessingFolderToolStripMenuItem.Name = "openSuccessfulProcessingFolderToolStripMenuItem";
-            this.openSuccessfulProcessingFolderToolStripMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.openSuccessfulProcessingFolderToolStripMenuItem.Text = Resources.Open_successful_processing_folder;
+            this.openSuccessfulProcessingFolderToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.openSuccessfulProcessingFolderToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Open_successful_processing_folder;
             this.openSuccessfulProcessingFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenSuccessfulProcessingFolderToolStripMenuItem_Click);
             // 
             // openFailedProcessingFolderToolStripMenuItem
             // 
             this.openFailedProcessingFolderToolStripMenuItem.Name = "openFailedProcessingFolderToolStripMenuItem";
-            this.openFailedProcessingFolderToolStripMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.openFailedProcessingFolderToolStripMenuItem.Text = Resources.Open_failed_processing_folder;
+            this.openFailedProcessingFolderToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.openFailedProcessingFolderToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Open_failed_processing_folder;
             this.openFailedProcessingFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenFailedProcessingFolderToolStripMenuItem_Click);
             // 
             // openSuccessfulDownloadsFolderToolStripMenuItem
             // 
             this.openSuccessfulDownloadsFolderToolStripMenuItem.Name = "openSuccessfulDownloadsFolderToolStripMenuItem";
-            this.openSuccessfulDownloadsFolderToolStripMenuItem.Size = new System.Drawing.Size(357, 30);
-            this.openSuccessfulDownloadsFolderToolStripMenuItem.Text = Resources.Open_successful_downloads_folder;
+            this.openSuccessfulDownloadsFolderToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.openSuccessfulDownloadsFolderToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Open_successful_downloads_folder;
             this.openSuccessfulDownloadsFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenSuccessfulDownloadsFolderToolStripMenuItem_Click);
             // 
             // jobsToolStrip
@@ -370,27 +369,26 @@ namespace RecurringIntegrationsScheduler.Forms
             this.editJobButton,
             this.pauseResumeDropDownButton,
             this.refreshButton});
-            this.jobsToolStrip.Location = new System.Drawing.Point(0, 442);
+            this.jobsToolStrip.Location = new System.Drawing.Point(0, 281);
             this.jobsToolStrip.Name = "jobsToolStrip";
             this.jobsToolStrip.Padding = new System.Windows.Forms.Padding(0);
-            this.jobsToolStrip.Size = new System.Drawing.Size(1132, 32);
+            this.jobsToolStrip.Size = new System.Drawing.Size(755, 25);
             this.jobsToolStrip.TabIndex = 4;
-            this.jobsToolStrip.Text = "";
             // 
             // instanceFilter
             // 
             this.instanceFilter.Enabled = false;
             this.instanceFilter.Name = "instanceFilter";
-            this.instanceFilter.Size = new System.Drawing.Size(112, 32);
-            this.instanceFilter.ToolTipText = Resources.Filter_instances;
+            this.instanceFilter.Size = new System.Drawing.Size(76, 25);
+            this.instanceFilter.ToolTipText = global::RecurringIntegrationsScheduler.Properties.Resources.Filter_instances;
             this.instanceFilter.TextChanged += new System.EventHandler(this.InstanceFilter_TextChanged);
             // 
             // jobNameFilter
             // 
             this.jobNameFilter.Enabled = false;
             this.jobNameFilter.Name = "jobNameFilter";
-            this.jobNameFilter.Size = new System.Drawing.Size(112, 32);
-            this.jobNameFilter.ToolTipText = Resources.Filter_job_names;
+            this.jobNameFilter.Size = new System.Drawing.Size(76, 25);
+            this.jobNameFilter.ToolTipText = global::RecurringIntegrationsScheduler.Properties.Resources.Filter_job_names;
             this.jobNameFilter.TextChanged += new System.EventHandler(this.JobNameFilter_TextChanged);
             // 
             // addJobsDropDownButton
@@ -400,44 +398,62 @@ namespace RecurringIntegrationsScheduler.Forms
             this.addImportJobMenuItem,
             this.addExportJobMenuItem,
             this.addUploadJobMenuItem,
-            this.addDownloadJobMenuItem});
+            this.addDownloadJobMenuItem,
+            this.addSQLImportJobMenuItem_M,
+            this.addSQLExportJobMenuItem_M});
             this.addJobsDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("addJobsDropDownButton.Image")));
             this.addJobsDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addJobsDropDownButton.Name = "addJobsDropDownButton";
-            this.addJobsDropDownButton.Size = new System.Drawing.Size(95, 29);
-            this.addJobsDropDownButton.Text = Resources.Add_job;
-            // 
-            // addUploadJobMenuItem
-            // 
-            this.addUploadJobMenuItem.Enabled = false;
-            this.addUploadJobMenuItem.Name = "addUploadJobMenuItem";
-            this.addUploadJobMenuItem.Size = new System.Drawing.Size(351, 30);
-            this.addUploadJobMenuItem.Text = Resources.Add_upload_job;
-            this.addUploadJobMenuItem.Click += new System.EventHandler(this.AddUploadJobMenuItem_Click);
-            // 
-            // addDownloadJobMenuItem
-            // 
-            this.addDownloadJobMenuItem.Enabled = false;
-            this.addDownloadJobMenuItem.Name = "addDownloadJobMenuItem";
-            this.addDownloadJobMenuItem.Size = new System.Drawing.Size(351, 30);
-            this.addDownloadJobMenuItem.Text = Resources.Add_download_job;
-            this.addDownloadJobMenuItem.Click += new System.EventHandler(this.AddDownloadJobMenuItem_Click);
+            this.addJobsDropDownButton.Size = new System.Drawing.Size(62, 22);
+            this.addJobsDropDownButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Add_job;
             // 
             // addImportJobMenuItem
             // 
             this.addImportJobMenuItem.Enabled = false;
             this.addImportJobMenuItem.Name = "addImportJobMenuItem";
-            this.addImportJobMenuItem.Size = new System.Drawing.Size(351, 30);
-            this.addImportJobMenuItem.Text = Resources.Add_import_job;
+            this.addImportJobMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.addImportJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Add_import_job;
             this.addImportJobMenuItem.Click += new System.EventHandler(this.AddImportJobMenuItem_Click);
             // 
             // addExportJobMenuItem
             // 
             this.addExportJobMenuItem.Enabled = false;
             this.addExportJobMenuItem.Name = "addExportJobMenuItem";
-            this.addExportJobMenuItem.Size = new System.Drawing.Size(351, 30);
-            this.addExportJobMenuItem.Text = Resources.Add_export_job;
+            this.addExportJobMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.addExportJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Add_export_job;
             this.addExportJobMenuItem.Click += new System.EventHandler(this.AddExportJobMenuItem_Click);
+            // 
+            // addUploadJobMenuItem
+            // 
+            this.addUploadJobMenuItem.Enabled = false;
+            this.addUploadJobMenuItem.Name = "addUploadJobMenuItem";
+            this.addUploadJobMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.addUploadJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Add_upload_job;
+            this.addUploadJobMenuItem.Click += new System.EventHandler(this.AddUploadJobMenuItem_Click);
+            // 
+            // addDownloadJobMenuItem
+            // 
+            this.addDownloadJobMenuItem.Enabled = false;
+            this.addDownloadJobMenuItem.Name = "addDownloadJobMenuItem";
+            this.addDownloadJobMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.addDownloadJobMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Add_download_job;
+            this.addDownloadJobMenuItem.Click += new System.EventHandler(this.AddDownloadJobMenuItem_Click);
+            // 
+            // addSQLImportJobMenuItem_M
+            // 
+            this.addSQLImportJobMenuItem_M.Enabled = false;
+            this.addSQLImportJobMenuItem_M.Name = "addSQLImportJobMenuItem_M";
+            this.addSQLImportJobMenuItem_M.Size = new System.Drawing.Size(244, 22);
+            this.addSQLImportJobMenuItem_M.Text = "Add SQL import job";
+            this.addSQLImportJobMenuItem_M.Click += new System.EventHandler(this.addSQLImportJobMenuItem_M_Click);
+            // 
+            // addSQLExportJobMenuItem_M
+            // 
+            this.addSQLExportJobMenuItem_M.Enabled = false;
+            this.addSQLExportJobMenuItem_M.Name = "addSQLExportJobMenuItem_M";
+            this.addSQLExportJobMenuItem_M.Size = new System.Drawing.Size(244, 22);
+            this.addSQLExportJobMenuItem_M.Text = "Add SQL export job";
+            this.addSQLExportJobMenuItem_M.Click += new System.EventHandler(this.addSQLExportJobMenuItem_M_Click);
             // 
             // deleteJobButton
             // 
@@ -446,9 +462,9 @@ namespace RecurringIntegrationsScheduler.Forms
             this.deleteJobButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteJobButton.Image")));
             this.deleteJobButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteJobButton.Name = "deleteJobButton";
-            this.deleteJobButton.Size = new System.Drawing.Size(97, 29);
+            this.deleteJobButton.Size = new System.Drawing.Size(64, 22);
             this.deleteJobButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Delete_job;
-            this.deleteJobButton.ToolTipText = Resources.Delete_job;
+            this.deleteJobButton.ToolTipText = global::RecurringIntegrationsScheduler.Properties.Resources.Delete_job;
             this.deleteJobButton.Click += new System.EventHandler(this.DeleteJobButton_Click);
             // 
             // editJobButton
@@ -458,7 +474,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.editJobButton.Image = ((System.Drawing.Image)(resources.GetObject("editJobButton.Image")));
             this.editJobButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editJobButton.Name = "editJobButton";
-            this.editJobButton.Size = new System.Drawing.Size(77, 29);
+            this.editJobButton.Size = new System.Drawing.Size(51, 22);
             this.editJobButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Edit_job;
             this.editJobButton.Click += new System.EventHandler(this.EditJobButton_Click);
             // 
@@ -474,35 +490,35 @@ namespace RecurringIntegrationsScheduler.Forms
             this.pauseResumeDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("pauseResumeDropDownButton.Image")));
             this.pauseResumeDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pauseResumeDropDownButton.Name = "pauseResumeDropDownButton";
-            this.pauseResumeDropDownButton.Size = new System.Drawing.Size(144, 29);
-            this.pauseResumeDropDownButton.Text = Resources.Pause_Resume;
+            this.pauseResumeDropDownButton.Size = new System.Drawing.Size(98, 22);
+            this.pauseResumeDropDownButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Pause_Resume;
             // 
             // pauseJobToolStripMenuItem
             // 
             this.pauseJobToolStripMenuItem.Name = "pauseJobToolStripMenuItem";
-            this.pauseJobToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
-            this.pauseJobToolStripMenuItem.Text = Resources.Pause_job;
+            this.pauseJobToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pauseJobToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Pause_job;
             this.pauseJobToolStripMenuItem.Click += new System.EventHandler(this.PauseJobToolStripMenuItem_Click);
             // 
             // pauseAllJobsToolStripMenuItem
             // 
             this.pauseAllJobsToolStripMenuItem.Name = "pauseAllJobsToolStripMenuItem";
-            this.pauseAllJobsToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
-            this.pauseAllJobsToolStripMenuItem.Text = Resources.Pause_all_jobs;
+            this.pauseAllJobsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.pauseAllJobsToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Pause_all_jobs;
             this.pauseAllJobsToolStripMenuItem.Click += new System.EventHandler(this.PauseAllJobsToolStripMenuItem_Click);
             // 
             // resumeJobToolStripMenuItem
             // 
             this.resumeJobToolStripMenuItem.Name = "resumeJobToolStripMenuItem";
-            this.resumeJobToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
-            this.resumeJobToolStripMenuItem.Text = Resources.Resume_job;
+            this.resumeJobToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.resumeJobToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Resume_job;
             this.resumeJobToolStripMenuItem.Click += new System.EventHandler(this.ResumeJobToolStripMenuItem_Click);
             // 
             // resumeAllJobsToolStripMenuItem
             // 
             this.resumeAllJobsToolStripMenuItem.Name = "resumeAllJobsToolStripMenuItem";
-            this.resumeAllJobsToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
-            this.resumeAllJobsToolStripMenuItem.Text = Resources.Resume_all_jobs;
+            this.resumeAllJobsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.resumeAllJobsToolStripMenuItem.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Resume_all_jobs;
             this.resumeAllJobsToolStripMenuItem.Click += new System.EventHandler(this.ResumeAllJobsToolStripMenuItem_Click);
             // 
             // refreshButton
@@ -512,8 +528,8 @@ namespace RecurringIntegrationsScheduler.Forms
             this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
             this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(111, 29);
-            this.refreshButton.Text = Resources.Refresh_grid;
+            this.refreshButton.Size = new System.Drawing.Size(97, 22);
+            this.refreshButton.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Refresh_grid;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // toolStripButton1
@@ -523,22 +539,20 @@ namespace RecurringIntegrationsScheduler.Forms
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 504);
+            this.ClientSize = new System.Drawing.Size(755, 328);
             this.Controls.Add(this.jobsDataGridView);
             this.Controls.Add(this.jobsToolStrip);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.mainMenuToolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(1010, 361);
+            this.MinimumSize = new System.Drawing.Size(679, 248);
             this.Name = "MainForm";
-            this.Text = Resources.Recurring_Integrations_Scheduler;
+            this.Text = "Recurring Integrations Scheduler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Manager_FormClosing);
             this.mainMenuToolStrip.ResumeLayout(false);
             this.mainMenuToolStrip.PerformLayout();
@@ -601,5 +615,7 @@ namespace RecurringIntegrationsScheduler.Forms
         private System.Windows.Forms.ToolStripMenuItem addDownloadJobMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addImportJobMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addExportJobMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addSQLImportJobMenuItem_M;
+        private System.Windows.Forms.ToolStripMenuItem addSQLExportJobMenuItem_M;
     }
 }
