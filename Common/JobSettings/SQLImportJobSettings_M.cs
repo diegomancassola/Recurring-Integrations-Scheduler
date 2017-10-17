@@ -1,7 +1,4 @@
-﻿/* Copyright (c) Microsoft Corporation. All rights reserved.
-   Licensed under the MIT License. */
-
-using Quartz;
+﻿using Quartz;
 using RecurringIntegrationsScheduler.Common.Contracts;
 using RecurringIntegrationsScheduler.Common.Properties;
 using System;
@@ -14,7 +11,7 @@ namespace RecurringIntegrationsScheduler.Common.JobSettings
     /// Serialize/deserialize DMImport job settings
     /// </summary>
     /// <seealso cref="RecurringIntegrationsScheduler.Common.Configuration.Settings" />
-    public class SQLImportJobSettings_M : Settings
+    public class SQLImportJobSettings_M : ImportJobSettings
     {
         /// <summary>
         /// Initialize and verify settings for job
@@ -28,128 +25,23 @@ namespace RecurringIntegrationsScheduler.Common.JobSettings
 
             base.Initialize(context);
 
-            InputDir = dataMap.GetString(SettingsConstants.InputDir);
-            if (!string.IsNullOrEmpty(InputDir))
+            //Start - DManc - 2017/10/13
+            SSISPackage = dataMap.GetString(SettingsConstants_M.SSISPackage);
+            if (string.IsNullOrEmpty(SSISPackage))
             {
-                try
-                {
-                    Directory.CreateDirectory(InputDir);
-                }
-                catch (Exception ex)
-                {
-                    throw new JobExecutionException(
-                        string.Format(CultureInfo.InvariantCulture,
-                            string.Format(Resources.Input_directory_does_not_exist_or_cannot_be_accessed,
-                                context.JobDetail.Key)), ex);
-                }
+                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
+                    string.Format(Resources_M.Missing_SSIS_package,
+                        context.JobDetail.Key)));
             }
             else
             {
-                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources.Input_directory_is_missing_in_job_configuration, context.JobDetail.Key)));
-            }
-
-            UploadSuccessDir = dataMap.GetString(SettingsConstants.UploadSuccessDir);
-            if (!string.IsNullOrEmpty(UploadSuccessDir))
-            {
                 try
                 {
-                    Directory.CreateDirectory(UploadSuccessDir);
-                }
-                catch (Exception ex)
-                {
-                    throw new JobExecutionException(
-                        string.Format(CultureInfo.InvariantCulture,
-                            string.Format(Resources.Upload_success_directory_does_not_exist_or_cannot_be_accessed,
-                                context.JobDetail.Key)), ex);
-                }
-            }
-            else
-            {
-                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources.Upload_success_directory_is_missing_in_job_configuration,
-                        context.JobDetail.Key)));
-            }
-
-            UploadErrorsDir = dataMap.GetString(SettingsConstants.UploadErrorsDir);
-            if (!string.IsNullOrEmpty(UploadErrorsDir))
-            {
-                try
-                {
-                    Directory.CreateDirectory(UploadErrorsDir);
-                }
-                catch (Exception ex)
-                {
-                    throw new JobExecutionException(
-                        string.Format(CultureInfo.InvariantCulture,
-                            string.Format(Resources.Upload_errors_directory_does_not_exist_or_cannot_be_accessed,
-                                context.JobDetail.Key)), ex);
-                }
-            }
-            else
-            {
-                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources.Upload_errors_directory_is_missing_in_job_configuration,
-                        context.JobDetail.Key)));
-            }
-
-            ExecutionJobPresent = Convert.ToBoolean(dataMap.GetString(SettingsConstants.ExecutionJobPresent));
-
-            Company = dataMap.GetString(SettingsConstants.Company);
-            if (string.IsNullOrEmpty(Company))
-            {
-                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources.Company_is_missing_in_job_configuration,
-                        context.JobDetail.Key)));
-            }
-
-            StatusFileExtension = dataMap.GetString(SettingsConstants.StatusFileExtension);
-            if (string.IsNullOrEmpty(StatusFileExtension))
-            {
-                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources.Extension_of_status_files_is_missing_in_job_configuration,
-                        context.JobDetail.Key)));
-            }
-
-            SearchPattern = dataMap.GetString(SettingsConstants.SearchPattern);
-            if (string.IsNullOrEmpty(SearchPattern))
-            {
-                SearchPattern = "*.*";
-            }
-
-            try
-            {
-                OrderBy = (OrderByOptions)Enum.Parse(typeof(OrderByOptions), dataMap.GetString(SettingsConstants.OrderBy));
-            }
-            catch
-            {
-                OrderBy = OrderByOptions.Created;
-            }
-
-            ReverseOrder = Convert.ToBoolean(dataMap.GetString(SettingsConstants.ReverseOrder));
-
-            DataProject = dataMap.GetString(SettingsConstants.DataProject);
-            if (string.IsNullOrEmpty(DataProject))
-            {
-                throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources.Data_project_is_missing_in_job_configuration,
-                        context.JobDetail.Key)));
-            }
-
-            OverwriteDataProject = Convert.ToBoolean(dataMap.GetString(SettingsConstants.OverwriteDataProject));
-
-            ExecuteImport = Convert.ToBoolean(dataMap.GetString(SettingsConstants.ExecuteImport));
-
-            PackageTemplate = dataMap.GetString(SettingsConstants.PackageTemplate);
-            if (!string.IsNullOrEmpty(PackageTemplate))
-            {
-                try
-                {
-                    if (!File.Exists(PackageTemplate))
+                    if (!File.Exists(SSISPackage))
                     {
                         throw new JobExecutionException(
                             string.Format(CultureInfo.InvariantCulture,
-                                string.Format(Resources.Package_template_0_not_found, PackageTemplate,
+                                string.Format(Resources_M.SSIS_package_not_found, PackageTemplate,
                                     context.JobDetail.Key)));
                     }
                 }
@@ -157,136 +49,55 @@ namespace RecurringIntegrationsScheduler.Common.JobSettings
                 {
                     throw new JobExecutionException(
                         string.Format(CultureInfo.InvariantCulture,
-                            string.Format(Resources.Verification_of_package_template_location_failed_0, PackageTemplate,
+                            string.Format(Resources_M.Verification_of_SSIS_package_location_failed_0, PackageTemplate,
                                 context.JobDetail.Key)), ex);
                 }
             }
 
-            //Start - DManc - 2017/10/13
-            SQLStatement = dataMap.GetString(SettingsConstants_M.SQLStatement_M);
-            if (string.IsNullOrEmpty(SQLStatement))
+            TempDir = dataMap.GetString(SettingsConstants_M.TempDir);
+            if (!string.IsNullOrEmpty(TempDir))
+            {
+                try
+                {
+                    Directory.CreateDirectory(TempDir);
+                }
+                catch (Exception ex)
+                {
+                    throw new JobExecutionException(
+                        string.Format(CultureInfo.InvariantCulture,
+                            string.Format(Resources_M.Temp_directory_does_not_exist_or_cannot_be_accessed,
+                                context.JobDetail.Key)), ex);
+                }
+            }
+            else
             {
                 throw new JobExecutionException(string.Format(CultureInfo.InvariantCulture,
-                    string.Format(Resources_M.Missing_SQL_Statement_M,
+                    string.Format(Resources_M.Temp_directory_is_missing_in_job_configuration,
                         context.JobDetail.Key)));
             }
             //End - DManc - 2017/10/13 
         }
 
-    #region Members
-
-    /// <summary>
-    /// Gets the input dir.
-    /// </summary>
-    /// <value>
-    /// The input dir.
-    /// </value>
-    public string InputDir { get; private set; }
-
-        /// <summary>
-        /// Gets the upload success dir.
-        /// </summary>
-        /// <value>
-        /// The upload success dir.
-        /// </value>
-        public string UploadSuccessDir { get; private set; }
-
-        /// <summary>
-        /// Gets the upload errors dir.
-        /// </summary>
-        /// <value>
-        /// The upload errors dir.
-        /// </value>
-        public string UploadErrorsDir { get; private set; }
-
-        /// <summary>
-        /// Gets the company.
-        /// </summary>
-        /// <value>
-        /// The company.
-        /// </value>
-        public string Company { get; private set; }
-
-        /// <summary>
-        /// Gets the status file extension.
-        /// </summary>
-        /// <value>
-        /// The status file extension.
-        /// </value>
-        public string StatusFileExtension { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether [execution job present].
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if [execution job present]; otherwise, <c>false</c>.
-        /// </value>
-        public bool ExecutionJobPresent { get; private set; }
-
-        /// <summary>
-        /// Gets the search pattern.
-        /// </summary>
-        /// <value>
-        /// The search pattern.
-        /// </value>
-        public string SearchPattern { get; private set; }
-
-        /// <summary>
-        /// Gets the order by.
-        /// </summary>
-        /// <value>
-        /// The order by.
-        /// </value>
-        public OrderByOptions OrderBy { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether [reverse order].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [reverse order]; otherwise, <c>false</c>.
-        /// </value>
-        public bool ReverseOrder { get; private set; }
-
-        /// <summary>
-        /// Gets data project.
-        /// </summary>
-        /// <value>
-        /// Data project.
-        /// </value>
-        public string DataProject { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether to overwrite existing data project.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [overwrite]; otherwise, <c>false</c>.
-        /// </value>
-        public bool OverwriteDataProject { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether to execute import.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [execute]; otherwise, <c>false</c>.
-        /// </value>
-        public bool ExecuteImport { get; private set; }
-
-        /// <summary>
-        /// Package template location.
-        /// </summary>
-        /// <value>
-        /// Package template location.
-        /// </value>
-        public string PackageTemplate { get; private set; }
+        #region Members
 
         //Start - DManc - 2017/10/13
         /// <summary>
-        /// SQL Statement
+        /// SSIS Package Name
         /// </summary>
         /// <value>
-        /// SQL Statement
+        /// SSIS Package Name
         /// </value>
-        public string SQLStatement { get; private set; }
+        public string SSISPackage { get; private set; }
+        //End - DManc - 2017/10/13 
+
+        //Start - DManc - 2017/10/13
+        /// <summary>
+        /// Temporary directory for SSIS output
+        /// </summary>
+        /// <value>
+        /// Temporary directory for SSIS output
+        /// </value>
+        public string TempDir { get; private set; }
         //End - DManc - 2017/10/13 
 
         #endregion

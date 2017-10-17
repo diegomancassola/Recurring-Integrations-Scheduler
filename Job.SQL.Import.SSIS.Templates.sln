@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Job.SQL.Import.SSIS.Templates", "Job.SQL.Import.SSIS.Templates\Job.SQL.Import.SSIS.Templates.dtproj", "{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.SQL.Import.SSIS.Templates.Test", "Job.SQL.Import.SSIS.Templates.Test\Job.SQL.Import.SSIS.Templates.Test.csproj", "{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}.Debug|Any CPU.ActiveCfg = Development
+		{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}.Debug|Any CPU.Build.0 = Development
+		{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}.Development|Any CPU.ActiveCfg = Development
+		{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}.Development|Any CPU.Build.0 = Development
+		{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}.Release|Any CPU.ActiveCfg = Development
+		{4CDFFCDD-5B04-4C8C-AF9D-1DB73B0C0E19}.Release|Any CPU.Build.0 = Development
+		{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6097BFC-ECFE-400F-AEAF-1246078FD4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

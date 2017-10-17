@@ -29,6 +29,9 @@ namespace RecurringIntegrationsScheduler.Forms
             Properties.Settings.Default.UploadErrorsFolder = uploadErrorsFolder.Text;
             Properties.Settings.Default.UploadInputFolder = uploadInputFolder.Text;
             Properties.Settings.Default.UploadSuccessFolder = uploadSuccessFolder.Text;
+            //Start - DManc - 2017/10/13
+            Properties.Settings.Default.TempFolder_M = tempFolder_M.Text;
+            //End - DManc - 2017/10/13
             Properties.Settings.Default.Save();
         }
 

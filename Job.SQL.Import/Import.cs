@@ -17,6 +17,11 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Xml;
 
+//Start - DManc - 2017/10/13
+using Microsoft.SqlServer.Dts.Runtime;
+using System.IO.Compression;
+//End - DManc - 2017/10/13
+
 namespace RecurringIntegrationsScheduler.Job
 {
     /// <summary>
@@ -78,7 +83,7 @@ namespace RecurringIntegrationsScheduler.Job
                 Log.DebugFormat(CultureInfo.InvariantCulture,
                     string.Format(Resources.Job_0_starting, _context.JobDetail.Key));
 
-                var t = Task.Run(Process);
+                var t = System.Threading.Tasks.Task.Run(this.Process);
                 t.Wait();
 
                 Log.DebugFormat(CultureInfo.InvariantCulture,
@@ -110,9 +115,88 @@ namespace RecurringIntegrationsScheduler.Job
         /// Processes this instance.
         /// </summary>
         /// <returns></returns>
-        private async Task Process()
+        private async System.Threading.Tasks.Task Process()
         {
+            Guid tempGuid = Guid.NewGuid();
             InputQueue = new ConcurrentQueue<DataMessage>();
+
+            //Start - DManc - 2017/10/13
+            //Create temporary folder
+            DirectoryInfo tempDir = new DirectoryInfo(_settings.TempDir + "\\" + tempGuid.ToString());
+            tempDir.Create();
+
+            //Execute SSIS package
+            string ssisExecutionError = "";
+            string ssisPackageName = _settings.SSISPackage;
+            Log.Info(string.Format(Resources.The_SSIS_package_0_is_executing, ssisPackageName));
+            Package pkg = null;
+            Microsoft.SqlServer.Dts.Runtime.Application app;
+            DTSExecResult result;
+            try
+            {
+                app = new Microsoft.SqlServer.Dts.Runtime.Application();
+                pkg = app.LoadPackage(ssisPackageName, null);
+                pkg.Parameters["OUTPUTPATH"].Value = tempDir.FullName;
+                result = pkg.Execute();
+                if (result == Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure)
+                {
+                    foreach (Microsoft.SqlServer.Dts.Runtime.DtsError dt_error in pkg.Errors)
+                        ssisExecutionError += dt_error.Description.ToString();
+                    throw new Exception(ssisExecutionError);
+                }
+                else if (result == Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success)
+                {
+                    Log.Info(string.Format(Resources.The_SSIS_package_0_executed_successfully, ssisPackageName));
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+
+            if (tempDir.GetFiles().Length > 0)
+            {
+                //Create ZIP package
+                FileInfo packageTemplate = new FileInfo(_settings.PackageTemplate);
+                FileInfo zipPackage = new FileInfo(tempDir.FullName + "\\" + tempGuid.ToString() + ".zip");
+                FileStream zipToOpen = null;
+                using (zipToOpen = new FileStream(packageTemplate.FullName, FileMode.Open))
+                {
+                    ZipArchive archive = null;
+
+                    FileOperationsHelper.Create(zipToOpen, zipPackage.FullName);
+                    var tempZipStream = FileOperationsHelper.Read(zipPackage.FullName);
+                    using (archive = new ZipArchive(tempZipStream, ZipArchiveMode.Update))
+                    {
+                        foreach (FileInfo entityFile in tempDir.GetFiles())
+                        {
+                            if (entityFile.Name == zipPackage.Name)
+                                continue;
+
+                            var sourceStream = FileOperationsHelper.Read(entityFile.FullName);
+                            if (sourceStream == null)
+                                continue;
+
+                            var importedFile = archive.CreateEntry(entityFile.Name, CompressionLevel.Fastest);
+                            using (var entryStream = importedFile.Open())
+                            {
+                                sourceStream.CopyTo(entryStream);
+                                sourceStream.Close();
+                                sourceStream.Dispose();
+                            }
+                        }
+                    }
+                }
+
+                //Move to input directory
+                zipPackage.CopyTo(_settings.InputDir + "\\" + zipPackage.Name);
+            }
+
+            //Delete temporary directory
+            tempDir.Delete(true);
+
+            //End - DManc - 2017/10/13
 
             foreach (
                 var dataMessage in FileOperationsHelper.GetFiles(MessageStatus.Input, _settings.InputDir, _settings.SearchPattern, SearchOption.AllDirectories, _settings.OrderBy, _settings.ReverseOrder))
@@ -134,25 +218,28 @@ namespace RecurringIntegrationsScheduler.Job
         /// <returns>
         /// Task object for continuation
         /// </returns>
-        private async Task ProcessInputQueue()
+        ///  //Start - DManc - 2017/10/13  
+        //private async Task ProcessInputQueue()
+        protected async System.Threading.Tasks.Task ProcessInputQueue()
+        //End - DManc - 2017/10/13
         {
             using (_httpClientHelper = new HttpClientHelper(_settings))
             {
                 var firstFile = true;
-                string fileNameInPackage = "";
+                //string fileNameInPackage = "";
                 FileStream zipToOpen = null;
                 ZipArchive archive = null;
 
-                if (!String.IsNullOrEmpty(_settings.PackageTemplate))
-                {
-                    fileNameInPackage = GetFileNameInPackage();
-                }
+                //if (!String.IsNullOrEmpty(_settings.PackageTemplate))
+                //{
+                //    fileNameInPackage = GetFileNameInPackage();
+                //}
 
                 while (InputQueue.TryDequeue(out DataMessage dataMessage))
                 {
                     try
                     {
-                        string tempFileName = "";
+                        //string tempFileName = "";
                         if (!firstFile)
                         {
                             System.Threading.Thread.Sleep(_settings.Interval);
@@ -165,26 +252,26 @@ namespace RecurringIntegrationsScheduler.Job
                         if (sourceStream == null) continue;//Nothing to do here
 
                         //If we need to "wrap" file in package envelope
-                        if (!String.IsNullOrEmpty(_settings.PackageTemplate))
-                        {
-                            using (zipToOpen = new FileStream(_settings.PackageTemplate, FileMode.Open))
-                            {
-                                tempFileName = Path.GetTempFileName();
-                                FileOperationsHelper.Create(zipToOpen, tempFileName);
-                                var tempZipStream = FileOperationsHelper.Read(tempFileName);
-                                using (archive = new ZipArchive(tempZipStream, ZipArchiveMode.Update))
-                                {
-                                    var importedFile = archive.CreateEntry(fileNameInPackage, CompressionLevel.Fastest);
-                                    using (var entryStream = importedFile.Open())
-                                    {
-                                        sourceStream.CopyTo(entryStream);
-                                        sourceStream.Close();
-                                        sourceStream.Dispose();
-                                    }
-                                }
-                                sourceStream = FileOperationsHelper.Read(tempFileName);
-                            }
-                        }
+                        //if (!String.IsNullOrEmpty(_settings.PackageTemplate))
+                        //{
+                        //    using (zipToOpen = new FileStream(_settings.PackageTemplate, FileMode.Open))
+                        //    {
+                        //        tempFileName = Path.GetTempFileName();
+                        //        FileOperationsHelper.Create(zipToOpen, tempFileName);
+                        //        var tempZipStream = FileOperationsHelper.Read(tempFileName);
+                        //        using (archive = new ZipArchive(tempZipStream, ZipArchiveMode.Update))
+                        //        {
+                        //            var importedFile = archive.CreateEntry(fileNameInPackage, CompressionLevel.Fastest);
+                        //            using (var entryStream = importedFile.Open())
+                        //            {
+                        //                sourceStream.CopyTo(entryStream);
+                        //                sourceStream.Close();
+                        //                sourceStream.Dispose();
+                        //            }
+                        //        }
+                        //        sourceStream = FileOperationsHelper.Read(tempFileName);
+                        //    }
+                        //}
 
                         Log.DebugFormat(CultureInfo.InvariantCulture, string.Format(Resources.Job_0_Uploading_file_1_File_size_2_bytes, _context.JobDetail.Key, dataMessage.FullPath.Replace(@"{", @"{{").Replace(@"}", @"}}"), sourceStream.Length));
 
@@ -203,10 +290,10 @@ namespace RecurringIntegrationsScheduler.Job
                         {
                             sourceStream.Close();
                             sourceStream.Dispose();
-                            if (!String.IsNullOrEmpty(_settings.PackageTemplate))
-                            {
-                                FileOperationsHelper.Delete(tempFileName);
-                            }
+                            //if (!String.IsNullOrEmpty(_settings.PackageTemplate))
+                            //{
+                            //    FileOperationsHelper.Delete(tempFileName);
+                            //}
                         }
                         if (uploadResponse.IsSuccessStatusCode)
                         {
@@ -289,30 +376,6 @@ namespace RecurringIntegrationsScheduler.Job
                     }
                 }
             }
-        }
-
-        private string GetFileNameInPackage()
-        {
-            var manifestPath = "";
-            using (ZipArchive package = ZipFile.OpenRead(_settings.PackageTemplate))
-            {
-                foreach (ZipArchiveEntry entry in package.Entries)
-                {
-                    if (entry.FullName.Equals("Manifest.xml", StringComparison.OrdinalIgnoreCase))
-                    {
-                        manifestPath = Path.Combine(Path.GetTempPath(), $"{_context.JobDetail.Key}-{entry.FullName}");
-                        entry.ExtractToFile(manifestPath, true);
-                    }
-                }
-            }
-            XmlDocument doc = new XmlDocument();
-            string fileName = "";
-            using (var manifestFile = new StreamReader(manifestPath))
-            {
-                doc.Load(new XmlTextReader(manifestFile) { Namespaces = false });
-                fileName = doc.SelectSingleNode("//InputFilePath[1]").InnerText;
-            }
-            return fileName;
         }
 
         private string CreateExecutionId(string dataProject)

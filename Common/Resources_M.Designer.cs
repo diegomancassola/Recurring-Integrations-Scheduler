@@ -61,11 +61,47 @@ namespace RecurringIntegrationsScheduler.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Missing SQL Statement.
+        ///   Looks up a localized string similar to Missing SSIS package.
         /// </summary>
-        internal static string Missing_SQL_Statement_M {
+        internal static string Missing_SSIS_package {
             get {
-                return ResourceManager.GetString("Missing_SQL_Statement_M", resourceCulture);
+                return ResourceManager.GetString("Missing_SSIS_package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SSIS package not found.
+        /// </summary>
+        internal static string SSIS_package_not_found {
+            get {
+                return ResourceManager.GetString("SSIS_package_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp directory does not exist or cannot be accessed. Job: {0}.
+        /// </summary>
+        internal static string Temp_directory_does_not_exist_or_cannot_be_accessed {
+            get {
+                return ResourceManager.GetString("Temp_directory_does_not_exist_or_cannot_be_accessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp directory is missing in job configuration. Job: {0}.
+        /// </summary>
+        internal static string Temp_directory_is_missing_in_job_configuration {
+            get {
+                return ResourceManager.GetString("Temp_directory_is_missing_in_job_configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification of SSIS file location failed! {0} Job: {1}.
+        /// </summary>
+        internal static string Verification_of_SSIS_package_location_failed_0 {
+            get {
+                return ResourceManager.GetString("Verification_of_SSIS_package_location_failed_0", resourceCulture);
             }
         }
     }

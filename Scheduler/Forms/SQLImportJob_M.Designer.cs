@@ -128,8 +128,13 @@ namespace RecurringIntegrationsScheduler.Forms
             this.dataProjectLabel = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.sqlStatement = new System.Windows.Forms.TextBox();
-            this.jobSQLStatementLabel = new System.Windows.Forms.Label();
+            this.tempDirFolderBrowserButton = new System.Windows.Forms.Button();
+            this.tempDirTextBox = new System.Windows.Forms.TextBox();
+            this.tempDirLabel = new System.Windows.Forms.Label();
+            this.ssisPackageFileBrowserButton = new System.Windows.Forms.Button();
+            this.jobSSISPackageLabel = new System.Windows.Forms.Label();
+            this.ssisPackage = new System.Windows.Forms.TextBox();
+            this.ssisPackageOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.jobDetailsGroupBox.SuspendLayout();
             this.axDetailsGroupBox.SuspendLayout();
             this.authMethodPanel.SuspendLayout();
@@ -869,7 +874,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.downloadFolderLabel.Name = "downloadFolderLabel";
             this.downloadFolderLabel.Size = new System.Drawing.Size(90, 13);
             this.downloadFolderLabel.TabIndex = 8;
-            this.downloadFolderLabel.Text = global::RecurringIntegrationsScheduler.Properties.Resources.Top_upload_folder;
+            this.downloadFolderLabel.Text = "Top upload folder";
             // 
             // processingJobGroupBox
             // 
@@ -1079,6 +1084,7 @@ namespace RecurringIntegrationsScheduler.Forms
             // 
             // searchPatternTextBox
             // 
+            this.searchPatternTextBox.Enabled = false;
             this.searchPatternTextBox.Location = new System.Drawing.Point(85, 18);
             this.searchPatternTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.searchPatternTextBox.Name = "searchPatternTextBox";
@@ -1179,8 +1185,12 @@ namespace RecurringIntegrationsScheduler.Forms
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.jobSQLStatementLabel);
-            this.groupBox1.Controls.Add(this.sqlStatement);
+            this.groupBox1.Controls.Add(this.tempDirFolderBrowserButton);
+            this.groupBox1.Controls.Add(this.tempDirTextBox);
+            this.groupBox1.Controls.Add(this.tempDirLabel);
+            this.groupBox1.Controls.Add(this.ssisPackageFileBrowserButton);
+            this.groupBox1.Controls.Add(this.jobSSISPackageLabel);
+            this.groupBox1.Controls.Add(this.ssisPackage);
             this.groupBox1.Location = new System.Drawing.Point(13, 499);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
@@ -1190,22 +1200,69 @@ namespace RecurringIntegrationsScheduler.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Import details";
             // 
-            // sqlStatement
+            // tempDirFolderBrowserButton
             // 
-            this.sqlStatement.Location = new System.Drawing.Point(11, 37);
-            this.sqlStatement.Multiline = true;
-            this.sqlStatement.Name = "sqlStatement";
-            this.sqlStatement.Size = new System.Drawing.Size(686, 68);
-            this.sqlStatement.TabIndex = 16;
+            this.tempDirFolderBrowserButton.Enabled = false;
+            this.tempDirFolderBrowserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tempDirFolderBrowserButton.Image = ((System.Drawing.Image)(resources.GetObject("tempDirFolderBrowserButton.Image")));
+            this.tempDirFolderBrowserButton.Location = new System.Drawing.Point(202, 74);
+            this.tempDirFolderBrowserButton.Margin = new System.Windows.Forms.Padding(0);
+            this.tempDirFolderBrowserButton.Name = "tempDirFolderBrowserButton";
+            this.tempDirFolderBrowserButton.Size = new System.Drawing.Size(24, 26);
+            this.tempDirFolderBrowserButton.TabIndex = 33;
+            this.tempDirFolderBrowserButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.tempDirFolderBrowserButton.UseVisualStyleBackColor = true;
+            this.tempDirFolderBrowserButton.Click += new System.EventHandler(this.tempDirFolderBrowserButton_Click);
             // 
-            // jobSQLStatementLabel
+            // tempDirTextBox
             // 
-            this.jobSQLStatementLabel.AutoSize = true;
-            this.jobSQLStatementLabel.Location = new System.Drawing.Point(9, 21);
-            this.jobSQLStatementLabel.Name = "jobSQLStatementLabel";
-            this.jobSQLStatementLabel.Size = new System.Drawing.Size(77, 13);
-            this.jobSQLStatementLabel.TabIndex = 17;
-            this.jobSQLStatementLabel.Text = "SQL statement";
+            this.tempDirTextBox.Enabled = false;
+            this.tempDirTextBox.Location = new System.Drawing.Point(12, 78);
+            this.tempDirTextBox.Name = "tempDirTextBox";
+            this.tempDirTextBox.Size = new System.Drawing.Size(187, 20);
+            this.tempDirTextBox.TabIndex = 32;
+            // 
+            // tempDirLabel
+            // 
+            this.tempDirLabel.AutoSize = true;
+            this.tempDirLabel.Location = new System.Drawing.Point(9, 60);
+            this.tempDirLabel.Name = "tempDirLabel";
+            this.tempDirLabel.Size = new System.Drawing.Size(86, 13);
+            this.tempDirLabel.TabIndex = 31;
+            this.tempDirLabel.Text = "Temporary folder";
+            // 
+            // ssisPackageFileBrowserButton
+            // 
+            this.ssisPackageFileBrowserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ssisPackageFileBrowserButton.Image = ((System.Drawing.Image)(resources.GetObject("ssisPackageFileBrowserButton.Image")));
+            this.ssisPackageFileBrowserButton.Location = new System.Drawing.Point(673, 34);
+            this.ssisPackageFileBrowserButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ssisPackageFileBrowserButton.Name = "ssisPackageFileBrowserButton";
+            this.ssisPackageFileBrowserButton.Size = new System.Drawing.Size(24, 26);
+            this.ssisPackageFileBrowserButton.TabIndex = 30;
+            this.ssisPackageFileBrowserButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.ssisPackageFileBrowserButton.UseVisualStyleBackColor = true;
+            this.ssisPackageFileBrowserButton.Click += new System.EventHandler(this.ssisPackageFileBrowserButton_Click);
+            // 
+            // jobSSISPackageLabel
+            // 
+            this.jobSSISPackageLabel.AutoSize = true;
+            this.jobSSISPackageLabel.Location = new System.Drawing.Point(9, 21);
+            this.jobSSISPackageLabel.Name = "jobSSISPackageLabel";
+            this.jobSSISPackageLabel.Size = new System.Drawing.Size(77, 13);
+            this.jobSSISPackageLabel.TabIndex = 17;
+            this.jobSSISPackageLabel.Text = "SSIS Package";
+            // 
+            // ssisPackage
+            // 
+            this.ssisPackage.Location = new System.Drawing.Point(11, 37);
+            this.ssisPackage.Name = "ssisPackage";
+            this.ssisPackage.Size = new System.Drawing.Size(659, 20);
+            this.ssisPackage.TabIndex = 16;
+            // 
+            // ssisPackageOpenFileDialog
+            // 
+            this.ssisPackageOpenFileDialog.Filter = "SSIS package files|*.dtsx";
             // 
             // SQLImportJob_M
             // 
@@ -1360,7 +1417,12 @@ namespace RecurringIntegrationsScheduler.Forms
         private System.Windows.Forms.Label PackageTemplateLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label jobSQLStatementLabel;
-        private System.Windows.Forms.TextBox sqlStatement;
+        private System.Windows.Forms.Label jobSSISPackageLabel;
+        private System.Windows.Forms.TextBox ssisPackage;
+        private System.Windows.Forms.Button ssisPackageFileBrowserButton;
+        private System.Windows.Forms.Button tempDirFolderBrowserButton;
+        private System.Windows.Forms.TextBox tempDirTextBox;
+        private System.Windows.Forms.Label tempDirLabel;
+        private System.Windows.Forms.OpenFileDialog ssisPackageOpenFileDialog;
     }
 }

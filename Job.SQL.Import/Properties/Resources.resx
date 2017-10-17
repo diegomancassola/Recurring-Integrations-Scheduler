@@ -159,4 +159,10 @@
   <data name="Delay_upload_of_next_file_for_0_seconds" xml:space="preserve">
     <value>Delay upload of next file for {0} seconds</value>
   </data>
+  <data name="The_SSIS_package_0_executed_successfully" xml:space="preserve">
+    <value>The SSIS package {0} executed successfully</value>
+  </data>
+  <data name="The_SSIS_package_0_is_executing" xml:space="preserve">
+    <value>The SSIS package {0} is executing</value>
+  </data>
 </root>

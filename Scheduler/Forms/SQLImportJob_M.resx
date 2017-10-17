@@ -229,7 +229,32 @@ Default example above means: Each working day of the week (MON-FRI) run every 15
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>377, 17</value>
   </metadata>
+  <data name="tempDirFolderBrowserButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAR1JREFUWEftlLEOgkAMQPkUP8Ww8wFsRmb9CQ0jzrj4EUy6uMhHqIOLuqoL63kl
+        Vg0WuGI5Br3kJaTt3b2WgKOU6hQyaBMyaBMyaJPXA3NlWTbQqKZICByKh3L4SkAfkHefJIlyXdeYMAzF
+        BPLufd8nL6qiVgAL6sDuJ5Opul5utYgLYPe77Z68sAhbAN4XbirDtHsA9xgLvF9Uhmn3AO5hC1CHNeEv
+        UCuACeR3BZr83YpQXwfmqgQWkOD+3ynGo3EjgR4mJaawWq54Ao8vQGwKnuep0/HMFuhjgcQUomjGE4Cl
+        k2sokJgCkG5StoDoFIJhwBOApQtEpxDH8+ezqcBzCm1RKQBLF+VTaIsPga4ggzYhgzYhgzYhg/ZQzh2S
+        chRbJsQlHwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ssisPackageFileBrowserButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAR1JREFUWEftlLEOgkAMQPkUP8Ww8wFsRmb9CQ0jzrj4EUy6uMhHqIOLuqoL63kl
+        Vg0WuGI5Br3kJaTt3b2WgKOU6hQyaBMyaBMyaJPXA3NlWTbQqKZICByKh3L4SkAfkHefJIlyXdeYMAzF
+        BPLufd8nL6qiVgAL6sDuJ5Opul5utYgLYPe77Z68sAhbAN4XbirDtHsA9xgLvF9Uhmn3AO5hC1CHNeEv
+        UCuACeR3BZr83YpQXwfmqgQWkOD+3ynGo3EjgR4mJaawWq54Ao8vQGwKnuep0/HMFuhjgcQUomjGE4Cl
+        k2sokJgCkG5StoDoFIJhwBOApQtEpxDH8+ezqcBzCm1RKQBLF+VTaIsPga4ggzYhgzYhgzYhg/ZQzh2S
+        chRbJsQlHwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="ssisPackageOpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>517, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>88</value>
   </metadata>
 </root>

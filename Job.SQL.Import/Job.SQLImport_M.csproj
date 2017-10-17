@@ -45,6 +45,10 @@
       <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_13.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -86,6 +90,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{96bb041a-3fde-400f-adda-9db19f3274be}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Job.Import\Job.Import.csproj">
+      <Project>{ebdcc3f9-0bff-4f31-a3e8-b2e730f5ab93}</Project>
+      <Name>Job.Import</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

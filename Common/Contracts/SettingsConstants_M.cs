@@ -30,7 +30,12 @@ namespace RecurringIntegrationsScheduler.Common.Contracts
         /// <summary>
         /// Package template
         /// </summary>
-        public const string SQLStatement_M = "SQLStatement";
+        public const string SSISPackage = "SSISPackage";
+
+        /// <summary>
+        /// Package template
+        /// </summary>
+        public const string TempDir = "TempDir";
 
         #endregion
         //End - DManc - 2017/10/13

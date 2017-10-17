@@ -185,5 +185,23 @@ namespace RecurringIntegrationsScheduler.Job.Properties {
                 return ResourceManager.GetString("Job_0_was_paused_because_of_error", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SSIS package {0} executed successfully.
+        /// </summary>
+        internal static string The_SSIS_package_0_executed_successfully {
+            get {
+                return ResourceManager.GetString("The_SSIS_package_0_executed_successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SSIS package {0} is executing.
+        /// </summary>
+        internal static string The_SSIS_package_0_is_executing {
+            get {
+                return ResourceManager.GetString("The_SSIS_package_0_is_executing", resourceCulture);
+            }
+        }
     }
 }

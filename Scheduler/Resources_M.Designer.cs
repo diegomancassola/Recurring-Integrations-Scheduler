@@ -61,11 +61,29 @@ namespace RecurringIntegrationsScheduler {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Missing SQL Statement.
+        ///   Looks up a localized string similar to Missing SSIS package.
         /// </summary>
-        internal static string Missing_SQL_Statement_M {
+        internal static string Missing_SSIS_package_M {
             get {
-                return ResourceManager.GetString("Missing_SQL_Statement_M", resourceCulture);
+                return ResourceManager.GetString("Missing_SSIS_package_M", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package tempate is missing.
+        /// </summary>
+        internal static string Package_template_is_missing {
+            get {
+                return ResourceManager.GetString("Package_template_is_missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp folder is not selected..
+        /// </summary>
+        internal static string Temp_folder_is_not_selected {
+            get {
+                return ResourceManager.GetString("Temp_folder_is_not_selected", resourceCulture);
             }
         }
     }

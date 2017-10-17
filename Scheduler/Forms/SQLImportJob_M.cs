@@ -82,6 +82,9 @@ namespace RecurringIntegrationsScheduler.Forms
             uploadErrorsFolderTextBox.Text = Properties.Settings.Default.UploadErrorsFolder;
             processingSuccessFolderTextBox.Text = Properties.Settings.Default.ProcessingSuccessFolder;
             processingErrorsFolderTextBox.Text = Properties.Settings.Default.ProcessingErrorsFolder;
+            //Start - DManc - 2017/10/13
+            tempDirTextBox.Text = Properties.Settings.Default.TempFolder_M;
+            //End - DManc - 2017/10/13
 
             if ((ImportJobDetail != null) && (ImportJobDetail != null))
             {
@@ -231,7 +234,8 @@ namespace RecurringIntegrationsScheduler.Forms
                 }
 
                 //Start - DManc - 2017/10/13
-                sqlStatement.Text = ImportJobDetail.JobDataMap[SettingsConstants_M.SQLStatement_M]?.ToString() ?? string.Empty;
+                ssisPackage.Text = ImportJobDetail.JobDataMap[SettingsConstants_M.SSISPackage]?.ToString() ?? string.Empty;
+                tempDirTextBox.Text = ImportJobDetail.JobDataMap[SettingsConstants_M.TempDir]?.ToString() ?? string.Empty;
                 //End - DManc - 2017/10/13
 
                 Properties.Settings.Default.Save();
@@ -303,6 +307,13 @@ namespace RecurringIntegrationsScheduler.Forms
                 processingErrorsFolderTextBox.Text = Path.Combine(topUploadFolderTextBox.Text,
                     Properties.Settings.Default.ProcessingErrorsFolder);
                 processingErrorsFolderBrowserButton.Enabled = false;
+
+                //Start - DManc - 2017/10/13
+                tempDirTextBox.Enabled = false;
+                tempDirTextBox.Text = Path.Combine(topUploadFolderTextBox.Text,
+                    Properties.Settings.Default.TempFolder_M);
+                tempDirFolderBrowserButton.Enabled = false;
+                //End - DManc - 2017/10/13
             }
             else
             {
@@ -324,6 +335,11 @@ namespace RecurringIntegrationsScheduler.Forms
                 processingErrorsFolderTextBox.Enabled = useMonitoringJobCheckBox.Checked;
                 processingErrorsFolderBrowserButton.Enabled = useMonitoringJobCheckBox.Checked;
 
+                //Start - DManc - 2017/10/13
+                tempDirTextBox.Enabled = true;
+                tempDirFolderBrowserButton.Enabled = true;
+                //End - DManc - 2017/10/13
+
                 if (string.IsNullOrEmpty(topUploadFolderTextBox.Text))
                 {
                     inputFolderTextBox.Text = "";
@@ -331,6 +347,9 @@ namespace RecurringIntegrationsScheduler.Forms
                     uploadErrorsFolderTextBox.Text = "";
                     processingSuccessFolderTextBox.Text = "";
                     processingErrorsFolderTextBox.Text = "";
+                    //Start - DManc - 2017/10/13
+                    tempDirTextBox.Text = "";
+                    //End - DManc - 2017/10/13
                 }
             }
         }
@@ -436,8 +455,14 @@ namespace RecurringIntegrationsScheduler.Forms
                 message.AppendLine(Resources.Status_file_extension_is_not_specified);
 
             //Start - DManc - 2017/10/13
-            if (string.IsNullOrEmpty(sqlStatement.Text))
-                message.AppendLine(Resources_M.Missing_SQL_Statement_M);
+            if (string.IsNullOrEmpty(packageTemplateTextBox.Text))
+                message.AppendLine(Resources_M.Package_template_is_missing);
+
+            if (string.IsNullOrEmpty(ssisPackage.Text))
+                message.AppendLine(Resources_M.Missing_SSIS_package_M);
+
+            if (string.IsNullOrEmpty(tempDirTextBox.Text) && useMonitoringJobCheckBox.Checked)
+                message.AppendLine(Resources_M.Temp_folder_is_not_selected);
             //End - DManc - 2017/10/13
 
             if (message.Length > 0)
@@ -561,9 +586,10 @@ namespace RecurringIntegrationsScheduler.Forms
                 {SettingsConstants.ExecuteImport, executeImportCheckBox.Checked.ToString()},
                 {SettingsConstants.OverwriteDataProject, overwriteDataProjectCheckBox.Checked.ToString()},
                 {SettingsConstants.DataProject, dataProject.Text},
-                {SettingsConstants.PackageTemplate, packageTemplateTextBox.Text}
+                {SettingsConstants.PackageTemplate, packageTemplateTextBox.Text},
                 //Start - DManc - 2017/10/13
-                ,{SettingsConstants_M.SQLStatement_M, sqlStatement.Text}
+                {SettingsConstants_M.SSISPackage, ssisPackage.Text},
+                {SettingsConstants_M.TempDir, tempDirTextBox.Text}
                 //End - DManc - 2017/10/13
         };
             if (serviceAuthRadioButton.Checked)
@@ -667,6 +693,10 @@ namespace RecurringIntegrationsScheduler.Forms
                         Properties.Settings.Default.ProcessingSuccessFolder);
                     processingErrorsFolderTextBox.Text = Path.Combine(topUploadFolderTextBox.Text,
                         Properties.Settings.Default.ProcessingErrorsFolder);
+                    //Start - DManc - 2017/10/13
+                    tempDirTextBox.Text = Path.Combine(topUploadFolderTextBox.Text,
+                         Properties.Settings.Default.TempFolder_M);
+                    //End - DManc - 2017/10/13
                     openFileDialog.InitialDirectory = topUploadFolderTextBox.Text;
                 }
             }
@@ -698,6 +728,10 @@ namespace RecurringIntegrationsScheduler.Forms
             processingErrorsFolderTextBox.Enabled = useMonitoringJobCheckBox.Checked && !useStandardSubfolder.Checked;
             processingErrorsFolderBrowserButton.Enabled = useMonitoringJobCheckBox.Checked &&
                                                           !useStandardSubfolder.Checked;
+            //Start - DManc - 2017/10/13
+            tempDirTextBox.Enabled = useMonitoringJobCheckBox.Checked && !useStandardSubfolder.Checked;
+            tempDirFolderBrowserButton.Enabled = useMonitoringJobCheckBox.Checked && !useStandardSubfolder.Checked;
+            //End - DManc - 2017/10/13
         }
 
         private void InputFolderButton_Click(object sender, EventArgs e)
@@ -786,5 +820,19 @@ namespace RecurringIntegrationsScheduler.Forms
             if (openFileDialog.ShowDialog() == DialogResult.OK)
                 packageTemplateTextBox.Text = openFileDialog.FileName;
         }
+
+        //Start - DManc - 2017/10/13
+        private void ssisPackageFileBrowserButton_Click(object sender, EventArgs e)
+        {
+            if (ssisPackageOpenFileDialog.ShowDialog() == DialogResult.OK)
+                ssisPackage.Text = ssisPackageOpenFileDialog.FileName;
+        }
+
+        private void tempDirFolderBrowserButton_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                tempDirTextBox.Text = folderBrowserDialog.SelectedPath;
+        }
+        //End - DManc - 2017/10/13
     }
 }
