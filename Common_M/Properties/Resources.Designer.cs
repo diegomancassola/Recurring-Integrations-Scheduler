@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RecurringIntegrationsScheduler.Common {
+namespace Common_M.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace RecurringIntegrationsScheduler.Common {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources_M {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources_M() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace RecurringIntegrationsScheduler.Common {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RecurringIntegrationsScheduler.Common.Resources_M", typeof(Resources_M).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common_M.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,24 @@ namespace RecurringIntegrationsScheduler.Common {
         internal static string Missing_SSIS_package {
             get {
                 return ResourceManager.GetString("Missing_SSIS_package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of input file path parameter missing.
+        /// </summary>
+        internal static string Name_of_input_file_path_parameter_missing {
+            get {
+                return ResourceManager.GetString("Name_of_input_file_path_parameter_missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of output path parameter missing.
+        /// </summary>
+        internal static string Name_of_output_path_parameter_missing {
+            get {
+                return ResourceManager.GetString("Name_of_output_path_parameter_missing", resourceCulture);
             }
         }
         

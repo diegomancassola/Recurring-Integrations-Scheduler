@@ -35,6 +35,16 @@ namespace RecurringIntegrationsScheduler.Common.Contracts
         /// <summary>
         /// Package template
         /// </summary>
+        public const string SSISOutputPathParmName = "SSISOutputPathParmName";
+
+        /// <summary>
+        /// Package template
+        /// </summary>
+        public const string SSISInputFilePathParmName = "SSISInputFilePathParmName";
+
+        /// <summary>
+        /// Package template
+        /// </summary>
         public const string TempDir = "TempDir";
 
         #endregion

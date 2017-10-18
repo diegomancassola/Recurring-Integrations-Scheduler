@@ -120,6 +120,12 @@
   <data name="Missing_SSIS_package_M" xml:space="preserve">
     <value>Missing SSIS package</value>
   </data>
+  <data name="Name_of_input_file_path_parameter_missing" xml:space="preserve">
+    <value>Name of input file path parameter missing</value>
+  </data>
+  <data name="Name_of_output_path_parameter_missing" xml:space="preserve">
+    <value>Name of output path parameter missing</value>
+  </data>
   <data name="Package_template_is_missing" xml:space="preserve">
     <value>Package tempate is missing</value>
   </data>

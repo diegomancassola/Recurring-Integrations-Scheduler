@@ -135,6 +135,8 @@ namespace RecurringIntegrationsScheduler.Forms
             this.jobSSISPackageLabel = new System.Windows.Forms.Label();
             this.ssisPackage = new System.Windows.Forms.TextBox();
             this.ssisPackageOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ssisOutputPathParmNameLabel = new System.Windows.Forms.Label();
+            this.ssisOutputPathParmName = new System.Windows.Forms.TextBox();
             this.jobDetailsGroupBox.SuspendLayout();
             this.axDetailsGroupBox.SuspendLayout();
             this.authMethodPanel.SuspendLayout();
@@ -840,7 +842,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.bottomToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelButton,
             this.addJobButton});
-            this.bottomToolStrip.Location = new System.Drawing.Point(0, 613);
+            this.bottomToolStrip.Location = new System.Drawing.Point(0, 651);
             this.bottomToolStrip.Name = "bottomToolStrip";
             this.bottomToolStrip.Size = new System.Drawing.Size(724, 25);
             this.bottomToolStrip.TabIndex = 7;
@@ -1185,6 +1187,8 @@ namespace RecurringIntegrationsScheduler.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ssisOutputPathParmNameLabel);
+            this.groupBox1.Controls.Add(this.ssisOutputPathParmName);
             this.groupBox1.Controls.Add(this.tempDirFolderBrowserButton);
             this.groupBox1.Controls.Add(this.tempDirTextBox);
             this.groupBox1.Controls.Add(this.tempDirLabel);
@@ -1195,7 +1199,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox1.Size = new System.Drawing.Size(703, 111);
+            this.groupBox1.Size = new System.Drawing.Size(703, 137);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Import details";
@@ -1205,7 +1209,7 @@ namespace RecurringIntegrationsScheduler.Forms
             this.tempDirFolderBrowserButton.Enabled = false;
             this.tempDirFolderBrowserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tempDirFolderBrowserButton.Image = ((System.Drawing.Image)(resources.GetObject("tempDirFolderBrowserButton.Image")));
-            this.tempDirFolderBrowserButton.Location = new System.Drawing.Point(202, 74);
+            this.tempDirFolderBrowserButton.Location = new System.Drawing.Point(201, 34);
             this.tempDirFolderBrowserButton.Margin = new System.Windows.Forms.Padding(0);
             this.tempDirFolderBrowserButton.Name = "tempDirFolderBrowserButton";
             this.tempDirFolderBrowserButton.Size = new System.Drawing.Size(24, 26);
@@ -1217,7 +1221,7 @@ namespace RecurringIntegrationsScheduler.Forms
             // tempDirTextBox
             // 
             this.tempDirTextBox.Enabled = false;
-            this.tempDirTextBox.Location = new System.Drawing.Point(12, 78);
+            this.tempDirTextBox.Location = new System.Drawing.Point(11, 39);
             this.tempDirTextBox.Name = "tempDirTextBox";
             this.tempDirTextBox.Size = new System.Drawing.Size(187, 20);
             this.tempDirTextBox.TabIndex = 32;
@@ -1225,7 +1229,7 @@ namespace RecurringIntegrationsScheduler.Forms
             // tempDirLabel
             // 
             this.tempDirLabel.AutoSize = true;
-            this.tempDirLabel.Location = new System.Drawing.Point(9, 60);
+            this.tempDirLabel.Location = new System.Drawing.Point(8, 21);
             this.tempDirLabel.Name = "tempDirLabel";
             this.tempDirLabel.Size = new System.Drawing.Size(86, 13);
             this.tempDirLabel.TabIndex = 31;
@@ -1247,7 +1251,7 @@ namespace RecurringIntegrationsScheduler.Forms
             // jobSSISPackageLabel
             // 
             this.jobSSISPackageLabel.AutoSize = true;
-            this.jobSSISPackageLabel.Location = new System.Drawing.Point(9, 21);
+            this.jobSSISPackageLabel.Location = new System.Drawing.Point(234, 21);
             this.jobSSISPackageLabel.Name = "jobSSISPackageLabel";
             this.jobSSISPackageLabel.Size = new System.Drawing.Size(77, 13);
             this.jobSSISPackageLabel.TabIndex = 17;
@@ -1255,20 +1259,37 @@ namespace RecurringIntegrationsScheduler.Forms
             // 
             // ssisPackage
             // 
-            this.ssisPackage.Location = new System.Drawing.Point(11, 37);
+            this.ssisPackage.Location = new System.Drawing.Point(236, 37);
             this.ssisPackage.Name = "ssisPackage";
-            this.ssisPackage.Size = new System.Drawing.Size(659, 20);
+            this.ssisPackage.Size = new System.Drawing.Size(434, 20);
             this.ssisPackage.TabIndex = 16;
             // 
             // ssisPackageOpenFileDialog
             // 
             this.ssisPackageOpenFileDialog.Filter = "SSIS package files|*.dtsx";
             // 
+            // ssisOutputPathParmNameLabel
+            // 
+            this.ssisOutputPathParmNameLabel.AutoSize = true;
+            this.ssisOutputPathParmNameLabel.Location = new System.Drawing.Point(234, 60);
+            this.ssisOutputPathParmNameLabel.Name = "ssisOutputPathParmNameLabel";
+            this.ssisOutputPathParmNameLabel.Size = new System.Drawing.Size(143, 13);
+            this.ssisOutputPathParmNameLabel.TabIndex = 35;
+            this.ssisOutputPathParmNameLabel.Text = "Output Path parameter name";
+            // 
+            // ssisOutputPathParmName
+            // 
+            this.ssisOutputPathParmName.Location = new System.Drawing.Point(236, 76);
+            this.ssisOutputPathParmName.Name = "ssisOutputPathParmName";
+            this.ssisOutputPathParmName.Size = new System.Drawing.Size(151, 20);
+            this.ssisOutputPathParmName.TabIndex = 34;
+            this.ssisOutputPathParmName.Text = "OUTPUTPATH";
+            // 
             // SQLImportJob_M
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 638);
+            this.ClientSize = new System.Drawing.Size(724, 676);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bottomToolStrip);
             this.Controls.Add(this.importDetailsGroupBox);
@@ -1424,5 +1445,7 @@ namespace RecurringIntegrationsScheduler.Forms
         private System.Windows.Forms.TextBox tempDirTextBox;
         private System.Windows.Forms.Label tempDirLabel;
         private System.Windows.Forms.OpenFileDialog ssisPackageOpenFileDialog;
+        private System.Windows.Forms.Label ssisOutputPathParmNameLabel;
+        private System.Windows.Forms.TextBox ssisOutputPathParmName;
     }
 }

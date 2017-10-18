@@ -61,6 +61,15 @@ namespace RecurringIntegrationsScheduler.Job.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Composite entity is not supported on this type of package.
+        /// </summary>
+        internal static string Composite_entity_is_not_supported_on_this_type_of_package {
+            get {
+                return ResourceManager.GetString("Composite_entity_is_not_supported_on_this_type_of_package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export job: {0} failed.
         /// </summary>
         internal static string Download_job_0_failed {
@@ -219,6 +228,24 @@ namespace RecurringIntegrationsScheduler.Job.Properties {
         internal static string Job_0_was_paused_because_of_error {
             get {
                 return ResourceManager.GetString("Job_0_was_paused_because_of_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SSIS package {0} executed successfully.
+        /// </summary>
+        internal static string The_SSIS_package_0_executed_successfully {
+            get {
+                return ResourceManager.GetString("The_SSIS_package_0_executed_successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SSIS package {0} is executing.
+        /// </summary>
+        internal static string The_SSIS_package_0_is_executing {
+            get {
+                return ResourceManager.GetString("The_SSIS_package_0_is_executing", resourceCulture);
             }
         }
     }

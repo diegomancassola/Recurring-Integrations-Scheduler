@@ -91,9 +91,9 @@
       <Project>{96bb041a-3fde-400f-adda-9db19f3274be}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Job.Import\Job.Import.csproj">
-      <Project>{ebdcc3f9-0bff-4f31-a3e8-b2e730f5ab93}</Project>
-      <Name>Job.Import</Name>
+    <ProjectReference Include="..\Common_M\Common_M.csproj">
+      <Project>{a30f0e41-2392-4122-b118-0e98a216c18a}</Project>
+      <Name>Common_M</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

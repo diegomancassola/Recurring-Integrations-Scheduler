@@ -235,6 +235,7 @@ namespace RecurringIntegrationsScheduler.Forms
 
                 //Start - DManc - 2017/10/13
                 ssisPackage.Text = ImportJobDetail.JobDataMap[SettingsConstants_M.SSISPackage]?.ToString() ?? string.Empty;
+                ssisOutputPathParmName.Text = ImportJobDetail.JobDataMap[SettingsConstants_M.SSISOutputPathParmName]?.ToString() ?? string.Empty;
                 tempDirTextBox.Text = ImportJobDetail.JobDataMap[SettingsConstants_M.TempDir]?.ToString() ?? string.Empty;
                 //End - DManc - 2017/10/13
 
@@ -461,6 +462,9 @@ namespace RecurringIntegrationsScheduler.Forms
             if (string.IsNullOrEmpty(ssisPackage.Text))
                 message.AppendLine(Resources_M.Missing_SSIS_package_M);
 
+            if (string.IsNullOrEmpty(ssisOutputPathParmName.Text))
+                message.AppendLine(Resources_M.Name_of_output_path_parameter_missing); 
+
             if (string.IsNullOrEmpty(tempDirTextBox.Text) && useMonitoringJobCheckBox.Checked)
                 message.AppendLine(Resources_M.Temp_folder_is_not_selected);
             //End - DManc - 2017/10/13
@@ -589,6 +593,7 @@ namespace RecurringIntegrationsScheduler.Forms
                 {SettingsConstants.PackageTemplate, packageTemplateTextBox.Text},
                 //Start - DManc - 2017/10/13
                 {SettingsConstants_M.SSISPackage, ssisPackage.Text},
+                {SettingsConstants_M.SSISOutputPathParmName, ssisOutputPathParmName.Text},
                 {SettingsConstants_M.TempDir, tempDirTextBox.Text}
                 //End - DManc - 2017/10/13
         };

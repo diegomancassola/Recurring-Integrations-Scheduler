@@ -198,6 +198,11 @@ namespace RecurringIntegrationsScheduler.Forms
                     cronTriggerRadioButton.Checked = true;
                     cronExpressionTextBox.Text = localTrigger.CronExpressionString;
                 }
+                //Start - DManc - 2017/10/13
+                ssisPackage.Text = JobDetail.JobDataMap[SettingsConstants_M.SSISPackage]?.ToString() ?? string.Empty;
+                ssisInputFilePathParmName.Text = JobDetail.JobDataMap[SettingsConstants_M.SSISInputFilePathParmName]?.ToString() ?? string.Empty;
+                //End - DManc - 2017/10/13
+
                 Properties.Settings.Default.Save();
             }
         }
@@ -301,6 +306,14 @@ namespace RecurringIntegrationsScheduler.Forms
             if (string.IsNullOrEmpty(legalEntity.Text))
                 message.AppendLine(Resources.Legal_entity_is_missing);
 
+            //Start - DManc - 2017/10/13
+            if (string.IsNullOrEmpty(ssisPackage.Text))
+                message.AppendLine(Resources_M.Missing_SSIS_package_M);
+
+            if (string.IsNullOrEmpty(ssisInputFilePathParmName.Text))
+                message.AppendLine(Resources_M.Name_of_input_file_path_parameter_missing); 
+            //End - DManc - 2017/10/13
+
             if (message.Length > 0)
                 MessageBox.Show(message.ToString(), Resources.Job_configuration_is_not_valid);
 
@@ -311,7 +324,7 @@ namespace RecurringIntegrationsScheduler.Forms
         {
             var detail = JobBuilder
                 .Create()
-                .OfType(Type.GetType("RecurringIntegrationsScheduler.Job.Export,RecurringIntegrationsScheduler.Job.Export", true))
+                .OfType(Type.GetType("RecurringIntegrationsScheduler.Job.SQLExport_M,RecurringIntegrationsScheduler.Job.SQLExport_M", true))
                 .WithDescription(jobDescription.Text)
                 .WithIdentity(new JobKey(jobName.Text, jobGroupComboBox.Text))
                 .UsingJobData(GetJobDataMap())
@@ -371,6 +384,10 @@ namespace RecurringIntegrationsScheduler.Forms
                 {SettingsConstants.DataProject, dataProject.Text},
                 {SettingsConstants.Company, legalEntity.Text},
                 {SettingsConstants.Interval, (interval.Value * 1000).ToString()},
+                //Start - DManc - 2017/10/13
+                {SettingsConstants_M.SSISPackage, ssisPackage.Text},
+                {SettingsConstants_M.SSISInputFilePathParmName, ssisInputFilePathParmName.Text},
+                //End - DManc - 2017/10/13
             };
             if (serviceAuthRadioButton.Checked)
             {
@@ -473,5 +490,14 @@ namespace RecurringIntegrationsScheduler.Forms
 
             userComboBox.Enabled = !serviceAuthRadioButton.Checked;
         }
+
+        //Start - DManc - 2017/10/13
+        private void ssisPackageFileBrowserButton_Click(object sender, EventArgs e)
+        {
+            if (ssisPackageOpenFileDialog.ShowDialog() == DialogResult.OK)
+                ssisPackage.Text = ssisPackageOpenFileDialog.FileName;
+        }
+
+        //End - DManc - 2017/10/13
     }
 }

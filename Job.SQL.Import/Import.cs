@@ -18,8 +18,8 @@ using System.Threading.Tasks;
 using System.Xml;
 
 //Start - DManc - 2017/10/13
+using RecurringIntegrationsScheduler.Common_M.JobSettings;
 using Microsoft.SqlServer.Dts.Runtime;
-using System.IO.Compression;
 //End - DManc - 2017/10/13
 
 namespace RecurringIntegrationsScheduler.Job
@@ -136,7 +136,7 @@ namespace RecurringIntegrationsScheduler.Job
             {
                 app = new Microsoft.SqlServer.Dts.Runtime.Application();
                 pkg = app.LoadPackage(ssisPackageName, null);
-                pkg.Parameters["OUTPUTPATH"].Value = tempDir.FullName;
+                pkg.Parameters[_settings.SSISOutputPathParmName].Value = tempDir.FullName;
                 result = pkg.Execute();
                 if (result == Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure)
                 {

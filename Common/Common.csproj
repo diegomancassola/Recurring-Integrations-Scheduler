@@ -78,8 +78,6 @@
     <Compile Include="Contracts\ContractEnums.cs" />
     <Compile Include="Contracts\SettingsConstants_M.cs" />
     <Compile Include="Helpers\FileOperationsHelper.cs" />
-    <Compile Include="JobSettings\SQLImportJobSettings_M.cs" />
-    <Compile Include="JobSettings\SQLExportJobSettings_M.cs" />
     <Compile Include="JobSettings\ExportJobSettings.cs" />
     <Compile Include="JobSettings\ImportJobSettings.cs" />
     <Compile Include="JobSettings\ExecutionJobSettings.cs" />
@@ -108,11 +106,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Resources_M.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources_M.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -129,10 +122,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources_M.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources_M.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,6 +12,13 @@ using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 
+//Start - DManc - 2017/10/13
+using System.Collections.Generic;
+using RecurringIntegrationsScheduler.Common_M.JobSettings;
+using RecurringIntegrationsScheduler.Common_M.Helpers;
+using Microsoft.SqlServer.Dts.Runtime;
+//End - DManc - 2017/10/13
+
 namespace RecurringIntegrationsScheduler.Job
 {
     /// <summary>
@@ -64,7 +71,7 @@ namespace RecurringIntegrationsScheduler.Job
 
                 Log.DebugFormat(CultureInfo.InvariantCulture, string.Format(Resources.Job_0_starting, _context.JobDetail.Key));
 
-                var t = Task.Run(Process);
+                var t = System.Threading.Tasks.Task.Run(Process);
                 t.Wait();
 
                 Log.DebugFormat(CultureInfo.InvariantCulture, string.Format(Resources.Job_0_ended, _context.JobDetail.Key));
@@ -94,7 +101,7 @@ namespace RecurringIntegrationsScheduler.Job
         /// Processes this instance.
         /// </summary>
         /// <returns></returns>
-        private async Task Process()
+        private async System.Threading.Tasks.Task Process()
         {
             using (_httpClientHelper = new HttpClientHelper(_settings))
             {
@@ -129,7 +136,8 @@ namespace RecurringIntegrationsScheduler.Job
 
                     using (Stream downloadedStream = await response.Content.ReadAsStreamAsync())
                     {
-                        var fileName = Guid.NewGuid().ToString() + ".zip";
+                        Guid downloadGuid = Guid.NewGuid();
+                        var fileName = downloadGuid.ToString() + ".zip";
                         var successPath = Path.Combine(_settings.DownloadSuccessDir, fileName);
                         var dataMessage = new DataMessage()
                         {
@@ -140,7 +148,53 @@ namespace RecurringIntegrationsScheduler.Job
                         FileOperationsHelper.Create(downloadedStream, dataMessage.FullPath);
 
                         if (_settings.UnzipPackage)
-                            FileOperationsHelper.UnzipPackage(dataMessage.FullPath, _settings.DeletePackage, _settings.AddTimestamp);
+                        {
+                            List<string> inputList = FileOperationsHelper_M.UnzipPackageToList(dataMessage.FullPath, _settings.DeletePackage, _settings.AddTimestamp);
+
+                            //Only one file per package
+                            if (inputList.Count > 1)
+                                throw new Exception(Resources.Composite_entity_is_not_supported_on_this_type_of_package);
+
+                            //Start - DManc - 2017/10/13
+                            //Execute package for each file downloaded
+                            foreach (string inputFullFileName in inputList)
+                            {
+                                FileInfo inputFile = new FileInfo(inputFullFileName);
+                                //Execute SSIS package
+                                string ssisExecutionError = "";
+                                string ssisPackageName = _settings.SSISPackage;
+                                Log.Info(string.Format(Resources.The_SSIS_package_0_is_executing, ssisPackageName));
+                                Package pkg = null;
+                                Microsoft.SqlServer.Dts.Runtime.Application app;
+                                DTSExecResult result;
+                                try
+                                {
+                                    app = new Microsoft.SqlServer.Dts.Runtime.Application();
+                                    pkg = app.LoadPackage(ssisPackageName, null);
+                                    pkg.Parameters[_settings.SSISInputFilePathParmName].Value = inputFile.FullName;
+                                    result = pkg.Execute();
+                                    if (result == Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure)
+                                    {
+                                        foreach (Microsoft.SqlServer.Dts.Runtime.DtsError dt_error in pkg.Errors)
+                                            ssisExecutionError += dt_error.Description.ToString();
+                                        throw new Exception(ssisExecutionError);
+                                    }
+                                    else if (result == Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success)
+                                    {
+                                        Log.Info(string.Format(Resources.The_SSIS_package_0_executed_successfully, ssisPackageName));
+
+                                        //Delete input file
+                                        inputFile.Delete();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Log.Error(ex.Message);
+                                    throw new Exception(ex.ToString());
+                                }
+                            }
+                            //End - DManc - 2017/10/13
+                        }
                     }
                 }
                 else if (executionStatus == "Unknown" || executionStatus == "Failed" || executionStatus == "Canceled")

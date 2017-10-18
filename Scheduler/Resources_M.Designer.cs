@@ -70,6 +70,24 @@ namespace RecurringIntegrationsScheduler {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name of input file path parameter missing.
+        /// </summary>
+        internal static string Name_of_input_file_path_parameter_missing {
+            get {
+                return ResourceManager.GetString("Name_of_input_file_path_parameter_missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of output path parameter missing.
+        /// </summary>
+        internal static string Name_of_output_path_parameter_missing {
+            get {
+                return ResourceManager.GetString("Name_of_output_path_parameter_missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Package tempate is missing.
         /// </summary>
         internal static string Package_template_is_missing {
