@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<job-scheduling-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xmlns="http://quartznet.sourceforge.net/JobSchedulingData">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>CUSTOMERGROUPIMPORT_UPLOAD</name>
+      <group>Upload jobs</group>
+      <description />
+      <job-type>RecurringIntegrationsScheduler.Job.Upload,RecurringIntegrationsScheduler.Job.Upload, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>InputDir</key>
+          <value>C:\Integrations\Upload\Input</value>
+        </entry>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Upload\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>UploadErrorsDir</key>
+          <value>C:\Integrations\Upload\UploadErrors</value>
+        </entry>
+        <entry>
+          <key>Company</key>
+          <value>RO01</value>
+        </entry>
+        <entry>
+          <key>EntityName</key>
+          <value>Customer groups</value>
+        </entry>
+        <entry>
+          <key>IsDataPackage</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>ActivityId</key>
+          <value>{00FAC5EC-CFC7-4C4B-A747-0CCC455E2438}</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>ProcessingJobPresent</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>SearchPattern</key>
+          <value>*.*</value>
+        </entry>
+        <entry>
+          <key>OrderBy</key>
+          <value>Created</value>
+        </entry>
+        <entry>
+          <key>ReverseOrder</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADw2m9ozKTkGu+lDjkQ8hmQQAAAACAAAAAAAQZgAAAAEAACAAAACAwBRmLmdFiwwY7NOej0cLTa/d0MytTgBCVYQ9liLkcAAAAAAOgAAAAAIAACAAAACCZumAOu/m+Uql/mhNtMpqbmyhS3YzPstPZLok79JQtCAAAADVxvA4syVNEHH8ihQdajf53BjtlmC9gGo62mGPukuSqEAAAABNZmk3ZZuR8UQruIczncc1kFQV+olVggCa2WkhhFDFOFs4WYbulFU/QyY/gnVN/62ENgpOa5qw+FroSnMxwOPy</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>ORDERSIMPORT_UPLOAD</name>
+      <group>Upload jobs</group>
+      <description />
+      <job-type>RecurringIntegrationsScheduler.Job.Upload,RecurringIntegrationsScheduler.Job.Upload, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>InputDir</key>
+          <value>C:\Integrations\Upload\Input</value>
+        </entry>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Upload\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>UploadErrorsDir</key>
+          <value>C:\Integrations\Upload\UploadErrors</value>
+        </entry>
+        <entry>
+          <key>Company</key>
+          <value>RO01</value>
+        </entry>
+        <entry>
+          <key>EntityName</key>
+          <value>Sales orders composite V2</value>
+        </entry>
+        <entry>
+          <key>IsDataPackage</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>ActivityId</key>
+          <value>{31EC9DC3-1A78-428D-846B-FD74974C23AF}</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>ProcessingJobPresent</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>SearchPattern</key>
+          <value>*.xml</value>
+        </entry>
+        <entry>
+          <key>OrderBy</key>
+          <value>Created</value>
+        </entry>
+        <entry>
+          <key>ReverseOrder</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADw2m9ozKTkGu+lDjkQ8hmQQAAAACAAAAAAAQZgAAAAEAACAAAACAwBRmLmdFiwwY7NOej0cLTa/d0MytTgBCVYQ9liLkcAAAAAAOgAAAAAIAACAAAACCZumAOu/m+Uql/mhNtMpqbmyhS3YzPstPZLok79JQtCAAAADVxvA4syVNEHH8ihQdajf53BjtlmC9gGo62mGPukuSqEAAAABNZmk3ZZuR8UQruIczncc1kFQV+olVggCa2WkhhFDFOFs4WYbulFU/QyY/gnVN/62ENgpOa5qw+FroSnMxwOPy</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTOMERGROUPIMPORT_UPLOAD-Processing monitor</name>
+      <group>Upload jobs</group>
+      <description>Processing monitor job for upload job CUSTOMERGROUPIMPORT_UPLOAD.Upload jobs</description>
+      <job-type>RecurringIntegrationsScheduler.Job.ProcessingMonitor,RecurringIntegrationsScheduler.Job.ProcessingMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Upload\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>ProcessingSuccessDir</key>
+          <value>C:\Integrations\Upload\ProcessingSuccess</value>
+        </entry>
+        <entry>
+          <key>ProcessingErrorsDir</key>
+          <value>C:\Integrations\Upload\ProcessingErrors</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>ActivityId</key>
+          <value>{00FAC5EC-CFC7-4C4B-A747-0CCC455E2438}</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADw2m9ozKTkGu+lDjkQ8hmQQAAAACAAAAAAAQZgAAAAEAACAAAACAwBRmLmdFiwwY7NOej0cLTa/d0MytTgBCVYQ9liLkcAAAAAAOgAAAAAIAACAAAACCZumAOu/m+Uql/mhNtMpqbmyhS3YzPstPZLok79JQtCAAAADVxvA4syVNEHH8ihQdajf53BjtlmC9gGo62mGPukuSqEAAAABNZmk3ZZuR8UQruIczncc1kFQV+olVggCa2WkhhFDFOFs4WYbulFU/QyY/gnVN/62ENgpOa5qw+FroSnMxwOPy</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTGROUPS_DOWNLOAD</name>
+      <group>Download jobs</group>
+      <description />
+      <job-type>RecurringIntegrationsScheduler.Job.Download,RecurringIntegrationsScheduler.Job.Download, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>DownloadSuccessDir</key>
+          <value>C:\Integrations\Download</value>
+        </entry>
+        <entry>
+          <key>DownloadErrorsDir</key>
+          <value>C:\Integrations\Download\Errors</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>ActivityId</key>
+          <value>{1DC4EE2C-B2D6-411D-9F57-A4C3A309EDB7}</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UnzipPackage</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>AddTimestamp</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>DeletePackage</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADw2m9ozKTkGu+lDjkQ8hmQQAAAACAAAAAAAQZgAAAAEAACAAAACAwBRmLmdFiwwY7NOej0cLTa/d0MytTgBCVYQ9liLkcAAAAAAOgAAAAAIAACAAAACCZumAOu/m+Uql/mhNtMpqbmyhS3YzPstPZLok79JQtCAAAADVxvA4syVNEHH8ihQdajf53BjtlmC9gGo62mGPukuSqEAAAABNZmk3ZZuR8UQruIczncc1kFQV+olVggCa2WkhhFDFOFs4WYbulFU/QyY/gnVN/62ENgpOa5qw+FroSnMxwOPy</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTGROUPS_EXPORT</name>
+      <group>Export jobs</group>
+      <description />
+      <job-type>RecurringIntegrationsScheduler.Job.Export,RecurringIntegrationsScheduler.Job.Export, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>DownloadSuccessDir</key>
+          <value>C:\Integrations\Inbound</value>
+        </entry>
+        <entry>
+          <key>DownloadErrorsDir</key>
+          <value>C:\Integrations\Inbound\Errors</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UnzipPackage</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>AddTimestamp</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>DeletePackage</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>DataProject</key>
+          <value>Customer group Export</value>
+        </entry>
+        <entry>
+          <key>Company</key>
+          <value>RO01</value>
+        </entry>
+        <entry>
+          <key>Interval</key>
+          <value>300000</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADw2m9ozKTkGu+lDjkQ8hmQQAAAACAAAAAAAQZgAAAAEAACAAAACAwBRmLmdFiwwY7NOej0cLTa/d0MytTgBCVYQ9liLkcAAAAAAOgAAAAAIAACAAAACCZumAOu/m+Uql/mhNtMpqbmyhS3YzPstPZLok79JQtCAAAADVxvA4syVNEHH8ihQdajf53BjtlmC9gGo62mGPukuSqEAAAABNZmk3ZZuR8UQruIczncc1kFQV+olVggCa2WkhhFDFOFs4WYbulFU/QyY/gnVN/62ENgpOa5qw+FroSnMxwOPy</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTGROUPS_IMPORT</name>
+      <group>Import jobs</group>
+      <description></description>
+      <job-type>RecurringIntegrationsScheduler.Job.Import,RecurringIntegrationsScheduler.Job.Import, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>InputDir</key>
+          <value>C:\Integrations\Outbound\Input</value>
+        </entry>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Outbound\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>UploadErrorsDir</key>
+          <value>C:\Integrations\Outbound\UploadErrors</value>
+        </entry>
+        <entry>
+          <key>Company</key>
+          <value>RO01</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>ExecutionJobPresent</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>SearchPattern</key>
+          <value>*.zip</value>
+        </entry>
+        <entry>
+          <key>OrderBy</key>
+          <value>Created</value>
+        </entry>
+        <entry>
+          <key>ReverseOrder</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>ExecuteImport</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>OverwriteDataProject</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>DataProject</key>
+          <value>CUSTOMERGROUPIMPORT2</value>
+        </entry>
+        <entry>
+          <key>PackageTemplate</key>
+          <value></value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe96H0zSOAkOhJgu2aBW0FwQAAAACAAAAAAADZgAAwAAAABAAAADJJrCfmSKMyQZjSztnQcwLAAAAAASAAACgAAAAEAAAAHRE3ZJaSwNiiHwwc7DEElEgAAAAgH49pwAQ37soYDPjGattQ25+LUB6PXsocFJdw5heXIgUAAAAZCHMx3Twaq989uBYKExRxJzmSGE=</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTGROUPS_IMPORT-Execution monitor</name>
+      <group>Import jobs</group>
+      <description>Execution monitor job for import job CUSTGROUPS_IMPORT.Import jobs</description>
+      <job-type>RecurringIntegrationsScheduler.Job.ExecutionMonitor,RecurringIntegrationsScheduler.Job.ExecutionMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Outbound\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>ProcessingSuccessDir</key>
+          <value>C:\Integrations\Outbound\ProcessingSuccess</value>
+        </entry>
+        <entry>
+          <key>ProcessingErrorsDir</key>
+          <value>C:\Integrations\Outbound\ProcessingErrors</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe96H0zSOAkOhJgu2aBW0FwQAAAACAAAAAAADZgAAwAAAABAAAADJJrCfmSKMyQZjSztnQcwLAAAAAASAAACgAAAAEAAAAHRE3ZJaSwNiiHwwc7DEElEgAAAAgH49pwAQ37soYDPjGattQ25+LUB6PXsocFJdw5heXIgUAAAAZCHMx3Twaq989uBYKExRxJzmSGE=</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTGROUP_IMPORT_TEMPLATE</name>
+      <group>Import jobs</group>
+      <description></description>
+      <job-type>RecurringIntegrationsScheduler.Job.Import,RecurringIntegrationsScheduler.Job.Import, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>InputDir</key>
+          <value>C:\Integrations\Outbound\Input</value>
+        </entry>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Outbound\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>UploadErrorsDir</key>
+          <value>C:\Integrations\Outbound\UploadErrors</value>
+        </entry>
+        <entry>
+          <key>Company</key>
+          <value>RO01</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>ExecutionJobPresent</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>SearchPattern</key>
+          <value>*.xml</value>
+        </entry>
+        <entry>
+          <key>OrderBy</key>
+          <value>Created</value>
+        </entry>
+        <entry>
+          <key>ReverseOrder</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>ExecuteImport</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>OverwriteDataProject</key>
+          <value>True</value>
+        </entry>
+        <entry>
+          <key>DataProject</key>
+          <value>CUSTGROUP_IMPORT_TEMPLATE</value>
+        </entry>
+        <entry>
+          <key>PackageTemplate</key>
+          <value>C:\Integrations\Outbound\Templates\Customer groups.zip</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe96H0zSOAkOhJgu2aBW0FwQAAAACAAAAAAADZgAAwAAAABAAAADJJrCfmSKMyQZjSztnQcwLAAAAAASAAACgAAAAEAAAAHRE3ZJaSwNiiHwwc7DEElEgAAAAgH49pwAQ37soYDPjGattQ25+LUB6PXsocFJdw5heXIgUAAAAZCHMx3Twaq989uBYKExRxJzmSGE=</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <job>
+      <name>CUSTGROUP_IMPORT_TEMPLATE-Execution monitor</name>
+      <group>Import jobs</group>
+      <description>Execution monitor job for import job CUSTGROUP_IMPORT_TEMPLATE.Import jobs</description>
+      <job-type>RecurringIntegrationsScheduler.Job.ExecutionMonitor,RecurringIntegrationsScheduler.Job.ExecutionMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</job-type>
+      <durable>false</durable>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>UploadSuccessDir</key>
+          <value>C:\Integrations\Outbound\UploadSuccess</value>
+        </entry>
+        <entry>
+          <key>ProcessingSuccessDir</key>
+          <value>C:\Integrations\Outbound\ProcessingSuccess</value>
+        </entry>
+        <entry>
+          <key>ProcessingErrorsDir</key>
+          <value>C:\Integrations\Outbound\ProcessingErrors</value>
+        </entry>
+        <entry>
+          <key>StatusFileExtension</key>
+          <value>.Status</value>
+        </entry>
+        <entry>
+          <key>AadTenant</key>
+          <value>mht.net</value>
+        </entry>
+        <entry>
+          <key>AzureAuthEndpoint</key>
+          <value>https://login.windows.net/common</value>
+        </entry>
+        <entry>
+          <key>AosUri</key>
+          <value>https://arcspr17up10029bd854cc72f5dcaos.cloudax.dynamics.com</value>
+        </entry>
+        <entry>
+          <key>AadClientId</key>
+          <value>dc0b1a9f-211d-4bfb-8de1-e2582fe26bc7</value>
+        </entry>
+        <entry>
+          <key>UseServiceAuthentication</key>
+          <value>False</value>
+        </entry>
+        <entry>
+          <key>UserName</key>
+          <value>diego.mancassola@mht.net</value>
+        </entry>
+        <entry>
+          <key>UserPassword</key>
+          <value>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAe96H0zSOAkOhJgu2aBW0FwQAAAACAAAAAAADZgAAwAAAABAAAADJJrCfmSKMyQZjSztnQcwLAAAAAASAAACgAAAAEAAAAHRE3ZJaSwNiiHwwc7DEElEgAAAAgH49pwAQ37soYDPjGattQ25+LUB6PXsocFJdw5heXIgUAAAAZCHMx3Twaq989uBYKExRxJzmSGE=</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTOMERGROUPIMPORT_UPLOAD.Upload jobs</name>
+        <group>Upload jobs</group>
+        <description>Trigger for job CUSTOMERGROUPIMPORT_UPLOAD.Upload jobs</description>
+        <job-name>CUSTOMERGROUPIMPORT_UPLOAD</job-name>
+        <job-group>Upload jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>UTC</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job ORDERSIMPORT_UPLOAD.Upload jobs</name>
+        <group>Upload jobs</group>
+        <description>Trigger for job ORDERSIMPORT_UPLOAD.Upload jobs</description>
+        <job-name>ORDERSIMPORT_UPLOAD</job-name>
+        <job-group>Upload jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * * * ?</cron-expression>
+        <time-zone>UTC</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTOMERGROUPIMPORT_UPLOAD-Processing monitor.Upload jobs</name>
+        <group>Upload jobs</group>
+        <description>Trigger for job CUSTOMERGROUPIMPORT_UPLOAD-Processing monitor.Upload jobs</description>
+        <job-name>CUSTOMERGROUPIMPORT_UPLOAD-Processing monitor</job-name>
+        <job-group>Upload jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>UTC</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTGROUPS_DOWNLOAD.Download jobs</name>
+        <group>Download jobs</group>
+        <description>Trigger for job CUSTGROUPS_DOWNLOAD.Download jobs</description>
+        <job-name>CUSTGROUPS_DOWNLOAD</job-name>
+        <job-group>Download jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>UTC</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTGROUPS_EXPORT.Export jobs</name>
+        <group>Export jobs</group>
+        <description>Trigger for job CUSTGROUPS_EXPORT.Export jobs</description>
+        <job-name>CUSTGROUPS_EXPORT</job-name>
+        <job-group>Export jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>UTC</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTGROUPS_IMPORT.Import jobs</name>
+        <group>Import jobs</group>
+        <description>Trigger for job CUSTGROUPS_IMPORT.Import jobs</description>
+        <job-name>CUSTGROUPS_IMPORT</job-name>
+        <job-group>Import jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>ora solare Europa occidentale</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTGROUPS_IMPORT-Execution monitor.Import jobs</name>
+        <group>Import jobs</group>
+        <description>Trigger for job CUSTGROUPS_IMPORT-Execution monitor.Import jobs</description>
+        <job-name>CUSTGROUPS_IMPORT-Execution monitor</job-name>
+        <job-group>Import jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>ora solare Europa occidentale</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTGROUP_IMPORT_TEMPLATE.Import jobs</name>
+        <group>Import jobs</group>
+        <description>Trigger for job CUSTGROUP_IMPORT_TEMPLATE.Import jobs</description>
+        <job-name>CUSTGROUP_IMPORT_TEMPLATE</job-name>
+        <job-group>Import jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>ora solare Europa occidentale</time-zone>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>Trigger for job CUSTGROUP_IMPORT_TEMPLATE-Execution monitor.Import jobs</name>
+        <group>Import jobs</group>
+        <description>Trigger for job CUSTGROUP_IMPORT_TEMPLATE-Execution monitor.Import jobs</description>
+        <job-name>CUSTGROUP_IMPORT_TEMPLATE-Execution monitor</job-name>
+        <job-group>Import jobs</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <cron-expression>0 0/1 * ? * * *</cron-expression>
+        <time-zone>ora solare Europa occidentale</time-zone>
+      </cron>
+    </trigger>
+  </schedule>
+</job-scheduling-data>

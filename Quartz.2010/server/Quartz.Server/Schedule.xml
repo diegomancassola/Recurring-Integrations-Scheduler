@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<job-scheduling-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xmlns="http://quartznet.sourceforge.net/JobSchedulingData">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule />
+</job-scheduling-data>
